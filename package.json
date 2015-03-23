@@ -1,0 +1,38 @@
+{
+  "browser": {
+    "angular": "./bower_components/angular/angular.js",
+    "angular-material": "./bower_components/angular-material/angular-material.js",
+    "angular-animate": "./bower_components/angular-animate/angular-animate.js",
+    "angular-aria": "./bower_components/angular-aria/angular-aria.js"
+  },
+  "browserify-shim": {
+    "angular": "angular",
+    "angular-material": {
+      "exports": null,
+      "depends": "angular"
+    },
+    "angular-aria": {
+      "exports": null,
+      "depends": "angular"
+    },
+    "angular-animate": {
+      "exports": null,
+      "depends": "angular"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "browserify-shim": "^3.8.3",
+    "gulp": "^3.8.11",
+    "gulp-rename": "^1.2.0",
+    "gulp-stylus": "^2.0.1",
+    "run-sequence": "^1.0.2",
+    "statik": "^1.4.6",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

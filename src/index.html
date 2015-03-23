@@ -1,0 +1,58 @@
+<html ng-app="habit">
+  <head>
+    <title>habit</title>
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+    <div layout="column" layout-fill layout-align="start center">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h3>
+            <span>habit app</span>
+          </h3>
+        </div>
+      </md-toolbar>
+      <md-content ng-controller="habitListController" class="md-padding main">
+        <div layout="row" layout-align="center center">
+          <div flex>
+            <h2>Meine Habits</h2>
+          </div>
+          <div flex style="text-align: right"><md-button ng-click="showNewHabitDialog()" class="md-raised md-primary">Neuer Habit</md-button></div>
+        </div>
+        <md-list>
+          <md-item>
+            <md-item-content>
+              <div class="md-tile-left">
+                <p>level 1</p>
+              </div>
+              <div class="md-tile-content">
+                <h3>habit name</h3>
+              </div>
+              <div class="md-tile-right">
+                <md-button class="md-primary">Done</md-button>
+                <md-button>Failed</md-button>
+              </div>
+            </md-item-content>
+          </md-item>
+          <md-divider />
+          <md-item>
+            <md-item-content>
+              <div class="md-tile-left">
+                <p>level 1</p>
+              </div>
+              <div class="md-tile-content">
+                <h3>habit name</h3>
+              </div>
+              <div class="md-tile-right">
+                <md-button class="md-primary">Done</md-button>
+                <md-button>Failed</md-button>
+              </div>
+            </md-item-content>
+          </md-item>
+          <md-divider />
+        </md-list>
+      </md-content>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

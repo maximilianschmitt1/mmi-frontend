@@ -1,0 +1,6 @@
+{
+  "name": "habitizer",
+  "dependencies": {
+    "angular-material": "~0.8.3"
+  }
+}
