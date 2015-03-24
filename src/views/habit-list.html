@@ -1,0 +1,40 @@
+<md-content ng-controller="HabitListController" class="md-padding">
+  <div layout="row" layout-align="center center">
+    <div flex>
+      <h2>Meine Habits</h2>
+    </div>
+    <div flex style="text-align: right"><md-button ng-click="showNewHabitDialog()" class="md-raised md-primary">Neuer Habit</md-button></div>
+  </div>
+  <md-list>
+    <md-item>
+      <md-item-content>
+        <div class="md-tile-left">
+          <p>level 1</p>
+        </div>
+        <div class="md-tile-content">
+          <h3>habit name</h3>
+        </div>
+        <div class="md-tile-right">
+          <md-button class="md-primary">Done</md-button>
+          <md-button>Failed</md-button>
+        </div>
+      </md-item-content>
+    </md-item>
+    <md-divider />
+    <md-item>
+      <md-item-content>
+        <div class="md-tile-left">
+          <p>level 1</p>
+        </div>
+        <div class="md-tile-content">
+          <h3>habit name</h3>
+        </div>
+        <div class="md-tile-right">
+          <md-button class="md-primary">Done</md-button>
+          <md-button>Failed</md-button>
+        </div>
+      </md-item-content>
+    </md-item>
+    <md-divider />
+  </md-list>
+</md-content>

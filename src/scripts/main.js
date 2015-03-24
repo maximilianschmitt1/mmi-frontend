@@ -1,11 +1,13 @@
 'use strict';
 
-var angular = require('angular');
 require('angular-animate');
 require('angular-aria');
 require('angular-material');
+require('angular-ui-router');
 
-var app = angular.module('habit', ['ngMaterial']);
+var angular = require('angular');
+
+var app = angular.module('habit', ['ngMaterial', 'ui.router']);
 
 app.config(function($mdThemingProvider) {
   $mdThemingProvider
@@ -13,4 +15,21 @@ app.config(function($mdThemingProvider) {
     .primaryPalette('red');
 });
 
-app.controller('habitListController', require('./controllers/habit-list-controller'));
+app.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/');
+  $stateProvider
+    .state('dashboard', {
+      url: '/',
+      templateUrl: 'views/habit-list.html'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'views/login.html'
+    })
+    .state('signup', {
+      url: '/signup',
+      templateUrl: 'views/signup.html'
+    });
+});
+
+app.controller('HabitListController', require('./controllers/habit-list-controller'));

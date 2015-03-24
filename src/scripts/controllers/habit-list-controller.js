@@ -1,38 +1,34 @@
 'use strict';
 
-var habitListController = function($scope, $mdDialog) {
+var HabitListController = function($scope, $mdDialog) {
   $scope.showNewHabitDialog = function(e) {
-    console.log($mdDialog);
     $mdDialog
       .show({
-        controller: dialogController,
+        controller: newHabitDialogController,
         templateUrl: 'views/new-habit-dialog.html',
-        targetEvent: e,
+        targetEvent: e
       })
-      .then(function() {
-        console.log('ok');
+      .then(function(answer) {
+        console.log('ok', answer);
       }, function() {
         console.log('cancel');
       });
 
-    function dialogController($scope, $mdDialog) {
+    function newHabitDialogController($scope, $mdDialog) {
       $scope.habit = {
         name: '',
         duration: 66
       };
 
-      $scope.hide = function() {
-        $mdDialog.hide();
-      };
       $scope.cancel = function() {
         $mdDialog.cancel();
       };
 
-      $scope.answer = function(answer) {
+      $scope.create = function(answer) {
         $mdDialog.hide(answer);
       };
     }
   };
 };
 
-module.exports = habitListController;
+module.exports = HabitListController;
