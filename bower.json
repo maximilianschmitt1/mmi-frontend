@@ -1,6 +1,7 @@
 {
   "name": "habitizer",
   "dependencies": {
-    "angular-material": "~0.8.3"
+    "angular-material": "~0.8.3",
+    "material-design-icons": "~1.0.1"
   }
 }
