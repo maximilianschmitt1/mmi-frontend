@@ -4,10 +4,11 @@ require('angular-animate');
 require('angular-aria');
 require('angular-material');
 require('angular-ui-router');
+require('ng-autofocus');
 
 var angular = require('angular');
 
-var app = angular.module('habit', ['ngMaterial', 'ui.router']);
+var app = angular.module('habit', ['ngMaterial', 'ui.router', 'ng-autofocus']);
 
 app.config(function($mdThemingProvider) {
   $mdThemingProvider

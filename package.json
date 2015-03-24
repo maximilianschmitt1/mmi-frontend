@@ -4,7 +4,8 @@
     "angular-material": "./bower_components/angular-material/angular-material.js",
     "angular-animate": "./bower_components/angular-animate/angular-animate.js",
     "angular-aria": "./bower_components/angular-aria/angular-aria.js",
-    "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js"
+    "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
+    "ng-autofocus": "./bower_components/ng-autofocus/dist/ng-autofocus.js"
   },
   "browserify-shim": {
     "angular": "angular",
@@ -21,6 +22,10 @@
       "depends": "angular"
     },
     "angular-animate": {
+      "exports": null,
+      "depends": "angular"
+    },
+    "ng-autofocus": {
       "exports": null,
       "depends": "angular"
     }
