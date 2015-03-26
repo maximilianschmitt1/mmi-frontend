@@ -1,54 +1,81 @@
 'use strict';
 
-var gulp = require('gulp');
+var gulp       = require('gulp');
 var browserify = require('browserify');
-var source = require('vinyl-source-stream');
-var stylus = require('gulp-stylus');
-var rename = require('gulp-rename');
-var sequence = require('run-sequence');
-var statik = require('statik');
+var source     = require('vinyl-source-stream');
+var stylus     = require('gulp-stylus');
+var rename     = require('gulp-rename');
+var sequence   = require('run-sequence');
+var statik     = require('statik');
+var notifier   = require('stream-notifier');
+var watchify   = require('watchify');
 
-gulp.task('scripts', function() {
-  var b = browserify('./src/scripts/main', { debug: true });
-  return b.bundle().pipe(source('app.js')).pipe(gulp.dest('dist'));
+gulp.task('browserify', function() {
+  var bundler = browserify('./src/main')
+  var bundle = compileBundle(bundler);
+
+  return bundle();
+});
+
+gulp.task('watchify', function() {
+  var opts = watchify.args;
+  opts.debug = true;
+
+  var bundler = watchify(browserify('./src/main', opts));
+  var bundle = compileBundle(bundler)
+  bundler.on('update', bundle);
+
+  return bundle();
 });
 
 gulp.task('styles', function() {
+  var n = notifier('styles');
+
   return gulp
     .src('src/styles/main.styl')
     .pipe(stylus({
       'import': '../../bower_components/angular-material/angular-material.css',
       'include css': true
     }))
+    .on('error', n.error)
     .pipe(rename('app.css'))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist'))
+    .on('end', n.end);
 });
 
 gulp.task('views', function() {
-  return gulp
-    .src('src/views/**/*.html')
-    .pipe(gulp.dest('dist/views'));
-});
+  var n = notifier('views');
 
-gulp.task('copy-index', function() {
   return gulp
-    .src('src/index.html')
-    .pipe(gulp.dest('dist'));
+    .src('src/**/*.html')
+    .pipe(gulp.dest('dist'))
+    .on('end', n.end);
 });
 
 gulp.task('serve', function() {
   statik({ port: 3000, root: 'dist' });
 });
 
-gulp.task('watch', function() {
-  gulp.watch('src/scripts/**/*.js', ['scripts']);
+gulp.task('watch', ['watchify'], function() {
   gulp.watch('src/styles/**/*.styl', ['styles']);
-  gulp.watch('src/views/**/*.html', ['views']);
-  gulp.watch('src/index.html', ['copy-index']);
+  gulp.watch('src/**/*.html', ['views']);
 });
 
-gulp.task('build', ['scripts', 'styles', 'views', 'copy-index']);
+gulp.task('build', ['browserify', 'styles', 'views']);
 
 gulp.task('default', function(cb) {
   sequence('build', 'serve', 'watch', cb);
 });
+
+function compileBundle(bundler) {
+  return function() {
+    var n = notifier('browserify');
+
+    return bundler
+      .bundle()
+      .on('error', n.error)
+      .pipe(source('app.js'))
+      .pipe(gulp.dest('dist'))
+      .on('end', n.end);
+  };
+}

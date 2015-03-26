@@ -10,6 +10,8 @@ var angular = require('angular');
 
 var app = angular.module('habit', ['ngMaterial', 'ui.router', 'ng-autofocus']);
 
+app.constant('API_URL', 'http://192.168.55.55');
+
 app.config(function($mdThemingProvider) {
   $mdThemingProvider
     .theme('default')
@@ -21,16 +23,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('dashboard', {
       url: '/',
-      templateUrl: 'views/habit-list.html'
+      controller: 'HabitListController',
+      templateUrl: 'habit-list/habit-list.html'
     })
     .state('login', {
       url: '/login',
-      templateUrl: 'views/login.html'
+      controller: 'LoginController',
+      templateUrl: 'login/login.html'
     })
     .state('signup', {
       url: '/signup',
-      templateUrl: 'views/signup.html'
+      controller: 'SignupController',
+      templateUrl: 'signup/signup.html'
     });
 });
 
-app.controller('HabitListController', require('./controllers/habit-list-controller'));
+app.controller('HabitListController', require('./habit-list/habit-list-controller'));
+app.controller('SignupController', require('./signup/signup-controller'));
+app.controller('LoginController', require('./login/login-controller'));

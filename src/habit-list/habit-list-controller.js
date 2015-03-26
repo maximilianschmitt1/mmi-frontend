@@ -5,7 +5,7 @@ var HabitListController = function($scope, $mdDialog) {
     $mdDialog
       .show({
         controller: newHabitDialogController,
-        templateUrl: 'views/new-habit-dialog.html',
+        templateUrl: 'habit-list/new-habit-dialog.html',
         targetEvent: e
       })
       .then(function(answer) {
