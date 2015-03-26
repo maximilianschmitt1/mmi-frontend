@@ -1,13 +1,13 @@
 <md-content class="md-padding primary-form">
   <h1>Login</h1>
-  <form ng-submit="login(user)">
+  <form ng-submit="login(credentials || {})">
     <md-input-container flex>
       <label>E-Mail</label>
-      <input type="email" autofocus ng-model="user.email">
+      <input type="email" autofocus ng-model="credentials.email">
     </md-input-container>
     <md-input-container flex>
       <label>Passwort</label>
-      <input type="password" ng-model="user.password">
+      <input type="password" ng-model="credentials.password">
     </md-input-container>
     <div layout="row">
       <span flex></span>

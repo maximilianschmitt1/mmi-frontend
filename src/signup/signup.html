@@ -1,6 +1,6 @@
 <md-content class="md-padding primary-form">
   <h1>Registrieren</h1>
-  <form ng-submit="signup(user)">
+  <form ng-submit="signup(user || {})">
     <div layout="row">
       <md-input-container flex>
         <label>Vorname</label>
