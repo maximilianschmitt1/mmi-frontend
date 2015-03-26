@@ -5,14 +5,12 @@ var SignupController = function($scope, $http, API_URL) {
     $http
       .post(API_URL + '/users', userData)
       .then(function(res) {
-        var response = res.data;
-
-        if (response.error) {
-          console.log(response.error);
-          return;
-        }
-
-        console.log(response);
+        $scope.success = true;
+        $scope.error = false;
+      })
+      .catch(function(res) {
+        $scope.success = false;
+        $scope.error = res.data.error;
       });
   };
 };

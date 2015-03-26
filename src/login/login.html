@@ -1,6 +1,9 @@
 <md-content class="md-padding primary-form">
   <h1>Login</h1>
-  <form ng-submit="login(credentials || {})">
+  <form ng-hide="success" ng-submit="login(credentials || {})">
+    <div class="error-message" ng-show="error">
+      <p>Ungültige Anmeldedaten.</p>
+    </div>
     <md-input-container flex>
       <label>E-Mail</label>
       <input type="email" autofocus ng-model="credentials.email">
@@ -14,4 +17,7 @@
       <md-button class="md-primary" type="submit">Login</md-button>
     </div>
   </form>
+  <div class="success-message" ng-show="success">
+    <p>Du wurdest erfolgreich eingeloggt.</p>
+  </div>
 </md-content>

@@ -1,26 +1,29 @@
 <md-content class="md-padding primary-form">
   <h1>Registrieren</h1>
-  <form ng-submit="signup(user || {})">
+  <form ng-hide="success" ng-submit="signup(user || {})">
+    <div class="error-message md-danger" ng-show="error">
+      <p>Bitte stell sicher, dass du alle Felder ausgefüllt hast und die von dir gewählte E-Mail-Adresse noch nicht vergeben ist.</p>
+    </div>
     <div layout="row">
       <md-input-container flex>
-        <label>Vorname</label>
+        <label>Vorname *</label>
         <input type="text" autofocus ng-model="user.firstName">
       </md-input-container>
       <md-input-container flex>
-        <label>Nachname</label>
+        <label>Nachname *</label>
         <input type="text" ng-model="user.lastName">
       </md-input-container>
     </div>
     <md-input-container flex>
-      <label>E-Mail</label>
+      <label>E-Mail *</label>
       <input type="email" ng-model="user.email">
     </md-input-container>
     <md-input-container flex>
-      <label>Passwort</label>
+      <label>Passwort (mind. 6 Zeichen) *</label>
       <input type="password" ng-model="user.password">
     </md-input-container>
     <md-input-container flex>
-      <label>Passwort bestätigen</label>
+      <label>Passwort bestätigen *</label>
       <input type="password" ng-model="user.passwordConfirmation">
     </md-input-container>
     <div layout="row">
@@ -28,4 +31,7 @@
       <md-button class="md-primary" type="submit">Registrieren</md-button>
     </div>
   </form>
+  <div class="success-message" ng-show="success">
+    <p>Deine Registrierung war erfolgreich.</p>
+  </div>
 </md-content>

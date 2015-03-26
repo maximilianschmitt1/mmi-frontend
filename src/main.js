@@ -10,6 +10,11 @@ var angular = require('angular');
 
 var app = angular.module('habit', ['ngMaterial', 'ui.router', 'ng-autofocus']);
 
+app.controller('HabitListController', require('./habit-list/habit-list-controller'));
+app.controller('SignupController', require('./signup/signup-controller'));
+app.controller('LoginController', require('./login/login-controller'));
+app.service('authTokenService', require('./auth/auth-token-service'));
+app.factory('authTokenInjector', require('./auth/auth-token-injector'));
 app.constant('API_URL', 'http://192.168.55.55');
 
 app.config(function($mdThemingProvider) {
@@ -38,6 +43,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
     });
 });
 
-app.controller('HabitListController', require('./habit-list/habit-list-controller'));
-app.controller('SignupController', require('./signup/signup-controller'));
-app.controller('LoginController', require('./login/login-controller'));
+app.config(function($httpProvider) {
+  $httpProvider.interceptors.push('authTokenInjector');
+});
