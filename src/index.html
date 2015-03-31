@@ -1,4 +1,4 @@
-<html ng-app="habit">
+<html ng-app="habit" ng-controller="AppController as app">
   <head>
     <title>habit</title>
     <link rel="stylesheet" href="app.css">
@@ -11,8 +11,13 @@
             <a ui-sref="dashboard">habit app</a>
           </h2>
           <div class="md-tools">
-            <md-button ui-sref="login">Login</md-button>
-            <md-button ui-sref="signup">Registieren</md-button>
+            <div ng-hide="user">
+              <md-button ui-sref="login">Login</md-button>
+              <md-button ui-sref="signup">Registieren</md-button>
+            </div>
+            <div ng-show="user">
+              <md-button ng-click="app.logout()">Ausloggen</md-button>
+            </div>
           </div>
         </div>
       </md-toolbar>

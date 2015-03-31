@@ -5,6 +5,9 @@ var authTokenService = function() {
     set: function(token) {
       localStorage.setItem('authToken', token);
     },
+    delete: function() {
+      localStorage.removeItem('authToken');
+    },
     get: function() {
       return localStorage.getItem('authToken');
     },

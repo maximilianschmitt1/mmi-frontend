@@ -10,6 +10,13 @@ var angular = require('angular');
 
 var app = angular.module('habit', ['ngMaterial', 'ui.router', 'ng-autofocus']);
 
+app.controller('AppController', function(authTokenService, $rootScope) {
+  this.logout = function() {
+    authTokenService.delete();
+    $rootScope.user = null;
+  };
+});
+
 app.controller('HabitListController', require('./habit-list/habit-list-controller'));
 app.controller('SignupController', require('./signup/signup-controller'));
 app.controller('LoginController', require('./login/login-controller'));
