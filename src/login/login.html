@@ -1,23 +1,20 @@
-<md-content class="md-padding primary-form">
-  <h1>Login</h1>
-  <form ng-hide="success" ng-submit="login(credentials || {})">
-    <div class="error-message" ng-show="error">
-      <p>Ungültige Anmeldedaten.</p>
-    </div>
-    <md-input-container flex>
-      <label>E-Mail</label>
-      <input type="email" autofocus ng-model="credentials.email">
-    </md-input-container>
-    <md-input-container flex>
-      <label>Passwort</label>
-      <input type="password" ng-model="credentials.password">
-    </md-input-container>
-    <div layout="row">
-      <span flex></span>
-      <md-button class="md-primary" type="submit">Login</md-button>
-    </div>
-  </form>
-  <div class="success-message" ng-show="success">
-    <p>Du wurdest erfolgreich eingeloggt.</p>
+<h1>Login</h1>
+<form ng-hide="success" ng-submit="login(credentials || {})">
+  <div class="error-message" ng-show="error">
+    <p>Ungültige Anmeldedaten.</p>
   </div>
-</md-content>
+  <div class="input-container">
+    <label>E-Mail</label>
+    <input type="email" autofocus ng-model="credentials.email">
+  </div>
+  <div class="input-container">
+    <label>Passwort</label>
+    <input type="password" ng-model="credentials.password">
+  </div>
+  <div class="input-container">
+    <button class="primary" type="submit">Login</button>
+  </div>
+</form>
+<div class="success-message" ng-show="success">
+  <p>Du wurdest erfolgreich eingeloggt.</p>
+</div>

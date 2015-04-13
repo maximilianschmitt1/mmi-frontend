@@ -1,0 +1,20 @@
+.habit-list
+  margin 0
+  padding 0
+  
+  .habit-list-item
+    @extends $row
+    border-bottom 1px solid color-neutral
+    padding 1em 0
+    font-size 0.8em
+    margin 0
+    
+    .level
+      flex 0 0 3em
+      margin-right 2em
+    
+    nav
+      display none
+    
+    &:hover nav
+      display block

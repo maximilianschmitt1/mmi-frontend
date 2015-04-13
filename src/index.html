@@ -4,24 +4,21 @@
     <link rel="stylesheet" href="app.css">
   </head>
   <body>
-    <div layout="column" layout-fill layout-align="start center">
-      <md-toolbar>
-        <div class="md-toolbar-tools">
-          <h2>
-            <a ui-sref="dashboard">habit app</a>
-          </h2>
-          <div class="md-tools">
-            <div ng-hide="user">
-              <md-button ui-sref="login">Login</md-button>
-              <md-button ui-sref="signup">Registieren</md-button>
-            </div>
-            <div ng-show="user">
-              <md-button ng-click="app.logout()">Ausloggen</md-button>
-            </div>
-          </div>
+    <header class="app-header">
+      <div class="wrapper">
+        <div class="app-name">
+          <h1><a ui-sref="dashboard">habit app</a></h1>
         </div>
-      </md-toolbar>
-      <div ui-view class="main"></div>
+        <nav>
+          <a ng-if="!user" ui-sref="login">Login</a>
+          <a ng-if="!user" ui-sref="signup">Registieren</a>
+
+          <a ng-if="user" ng-click="app.logout()">Ausloggen</a>
+        </nav>
+      </div>
+    </header>
+    <div class="wrapper">
+      <section ui-view class="main"></section>
     </div>
     <script src="app.js"></script>
   </body>

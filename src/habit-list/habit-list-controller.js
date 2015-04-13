@@ -1,11 +1,13 @@
 'use strict';
 
-var HabitListController = function($scope, $mdDialog, $http, API_URL) {
+var HabitListController = function($scope, $http, API_URL) {
   $scope.habits = [];
 
   getHabits();
 
   $scope.showNewHabitDialog = function(e) {
+    console.log('show new dialog');
+    return;
     $mdDialog.show({
       controller: newHabitDialogController,
       templateUrl: 'habit-list/new-habit-dialog.html',

@@ -1,14 +1,11 @@
 'use strict';
 
-require('angular-animate');
-require('angular-aria');
-require('angular-material');
-require('angular-ui-router');
 require('ng-autofocus');
+require('angular-ui-router');
 
 var angular = require('angular');
 
-var app = angular.module('habit', ['ngMaterial', 'ui.router', 'ng-autofocus']);
+var app = angular.module('habit', ['ui.router', 'ng-autofocus']);
 
 app.controller('AppController', function(authTokenService, $rootScope) {
   this.logout = function() {
@@ -23,12 +20,6 @@ app.controller('LoginController', require('./login/login-controller'));
 app.service('authTokenService', require('./auth/auth-token-service'));
 app.factory('authTokenInjector', require('./auth/auth-token-injector'));
 app.constant('API_URL', 'http://192.168.55.55');
-
-app.config(function($mdThemingProvider) {
-  $mdThemingProvider
-    .theme('default')
-    .primaryPalette('red');
-});
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');

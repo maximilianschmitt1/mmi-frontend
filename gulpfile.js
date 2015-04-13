@@ -34,7 +34,7 @@ gulp.task('styles', function() {
   return gulp
     .src('src/styles/main.styl')
     .pipe(stylus({
-      'import': '../../bower_components/angular-material/angular-material.css',
+      'import': '../../bower_components/normalize.css/normalize.css',
       'include css': true
     }))
     .on('error', n.error)
@@ -57,7 +57,7 @@ gulp.task('serve', function() {
 });
 
 gulp.task('watch', ['watchify'], function() {
-  gulp.watch('src/styles/**/*.styl', ['styles']);
+  gulp.watch('src/**/*.styl', ['styles']);
   gulp.watch('src/**/*.html', ['views']);
 });
 
