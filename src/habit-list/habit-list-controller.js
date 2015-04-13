@@ -7,10 +7,10 @@ var HabitListController = function($scope, $mdDialog, $http, API_URL) {
 
   $scope.showNewHabitDialog = function(e) {
     $mdDialog.show({
-        controller: newHabitDialogController,
-        templateUrl: 'habit-list/new-habit-dialog.html',
-        targetEvent: e
-      });
+      controller: newHabitDialogController,
+      templateUrl: 'habit-list/new-habit-dialog.html',
+      targetEvent: e
+    });
 
     function newHabitDialogController($scope, $mdDialog, $http, API_URL) {
       $scope.habit = {
@@ -37,6 +37,11 @@ var HabitListController = function($scope, $mdDialog, $http, API_URL) {
     return $http
       .get(API_URL + '/habits')
       .then(function(res) {
+        var habits = res.data.habits;
+        habits.forEach(function(habit) {
+          habit.level = Math.ceil(Math.random() * 10);
+        });
+
         $scope.habits = res.data.habits;
       });
   }

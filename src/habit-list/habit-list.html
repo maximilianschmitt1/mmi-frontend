@@ -7,9 +7,9 @@
   </div>
   <md-list>
     <md-item ng-repeat="habit in habits">
-      <md-item-content>
+      <md-item-content class="habit-list-item">
         <div class="md-tile-left">
-          <p>level</p>
+          <div class="level">{{habit.level}}</div>
         </div>
         <div class="md-tile-content">
           <h3>{{habit.name}}</h3>
