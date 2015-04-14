@@ -9,9 +9,6 @@ var authService = function($http, API_URL, authRegistry) {
         .post(API_URL + '/auth/authenticate', credentials)
         .then(function(res) {
           authRegistry.token(res.data.authToken);
-          return $http.get(API_URL + '/auth/identify');
-        })
-        .then(function(res) {
           authRegistry.user(res.data.user);
         });
     },
