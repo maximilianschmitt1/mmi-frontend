@@ -7,17 +7,15 @@ var angular = require('angular');
 
 var app = angular.module('habit', ['ui.router', 'ng-autofocus']);
 
-app.controller('AppController', function(authTokenService, $rootScope) {
-  this.logout = function() {
-    authTokenService.delete();
-    $rootScope.user = null;
-  };
+app.controller('AppController', function(authService) {
+  this.logout = authService.logout;
 });
 
 app.controller('HabitListController', require('./habit-list/habit-list-controller'));
 app.controller('SignupController', require('./signup/signup-controller'));
 app.controller('LoginController', require('./login/login-controller'));
-app.service('authTokenService', require('./auth/auth-token-service'));
+app.service('authService', require('./auth/auth-service'));
+app.service('authRegistry', require('./auth/auth-registry'));
 app.factory('authTokenInjector', require('./auth/auth-token-injector'));
 app.constant('API_URL', 'http://192.168.55.55');
 
@@ -39,6 +37,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
       controller: 'SignupController',
       templateUrl: 'signup/signup.html'
     });
+});
+
+app.run(function(authRegistry) {
+  authRegistry.config();
 });
 
 app.config(function($httpProvider) {

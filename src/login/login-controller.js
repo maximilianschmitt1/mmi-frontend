@@ -1,19 +1,12 @@
 'use strict';
 
-var LoginController = function($scope, $http, API_URL, authTokenService, $rootScope) {
+var LoginController = function($scope, authService) {
   $scope.login = function(credentials) {
-    $http
-      .post(API_URL + '/auth/authenticate', credentials)
+    authService
+      .login(credentials)
       .then(function(res) {
-        authTokenService.set(res.data.authToken);
         $scope.success = true;
         $scope.error = false;
-
-        return $http.get(API_URL + '/auth/identify');
-      })
-      .then(function(res) {
-        var user = res.data.user;
-        $rootScope.user = user;
       })
       .catch(function(res) {
         $scope.success = false;
