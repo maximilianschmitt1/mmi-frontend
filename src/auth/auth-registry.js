@@ -7,7 +7,7 @@ var authRegistry = function($rootScope) {
     user: function(value) {
       if (value) {
         user = value;
-        localStorage.setItem('auth-user', user);
+        localStorage.setItem('auth-user', JSON.stringify(user));
         $rootScope.user = user;
       }
 
@@ -30,8 +30,13 @@ var authRegistry = function($rootScope) {
       localStorage.removeItem('auth-token');
     },
     config: function() {
-      user = localStorage.getItem('auth-user') || null;
-      token = localStorage.getItem('auth-token') || null;
+      try {
+        this.user(JSON.parse(localStorage.getItem('auth-user')) || null);
+      } catch (err) {
+        localStorage.removeItem('auth-user');
+      }
+
+      this.token(localStorage.getItem('auth-token') || null);
     }
   };
 };

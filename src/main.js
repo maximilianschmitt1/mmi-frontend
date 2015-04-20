@@ -7,7 +7,7 @@ var angular = require('angular');
 
 var app = angular.module('habit', ['ui.router', 'ng-autofocus']);
 
-app.controller('AppController', function(authService) {
+app.controller('AppController', function(authService, $state) {
   this.logout = authService.logout;
 });
 
@@ -25,7 +25,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('dashboard', {
       url: '/',
       controller: 'HabitListController',
-      templateUrl: 'habit-list/habit-list.html'
+      templateUrl: 'habit-list/habit-list.html',
+      auth: true
     })
     .state('login', {
       url: '/login',
@@ -39,8 +40,29 @@ app.config(function($stateProvider, $urlRouterProvider) {
     });
 });
 
-app.run(function(authRegistry) {
+app.run(function(authRegistry, $rootScope, $state) {
   authRegistry.config();
+
+  // redirect auth-routes to login if not logged in
+  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+    if (toState.auth && !authRegistry.token()) {
+      $rootScope.previousState = {
+        name: toState.name,
+        params: toParams
+      };
+
+      $state.go('login');
+      e.preventDefault();
+    }
+  });
+
+  $rootScope.$on('login', function() {
+    $state.go('dashboard');
+  });
+
+  $rootScope.$on('logout', function() {
+    $state.go('login');
+  });
 });
 
 app.config(function($httpProvider) {

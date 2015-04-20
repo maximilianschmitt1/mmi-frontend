@@ -1,6 +1,6 @@
 'use strict';
 
-var authService = function($http, API_URL, authRegistry) {
+var authService = function($http, API_URL, authRegistry, $rootScope) {
   var token, user;
 
   return {
@@ -10,6 +10,7 @@ var authService = function($http, API_URL, authRegistry) {
         .then(function(res) {
           authRegistry.token(res.data.authToken);
           authRegistry.user(res.data.user);
+          $rootScope.$broadcast('login');
         });
     },
     logout: function() {
@@ -17,6 +18,7 @@ var authService = function($http, API_URL, authRegistry) {
       user = null;
 
       authRegistry.unset();
+      $rootScope.$broadcast('logout');
     }
   };
 };
