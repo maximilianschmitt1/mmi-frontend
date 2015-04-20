@@ -14,6 +14,7 @@ app.controller('AppController', function(authService, $state) {
 app.controller('HabitListController', require('./habit-list/habit-list-controller'));
 app.controller('SignupController', require('./signup/signup-controller'));
 app.controller('LoginController', require('./login/login-controller'));
+app.controller('CreateHabitController', require('./create-habit/create-habit-controller'));
 app.service('authService', require('./auth/auth-service'));
 app.service('authRegistry', require('./auth/auth-registry'));
 app.factory('authTokenInjector', require('./auth/auth-token-injector'));
@@ -26,6 +27,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/',
       controller: 'HabitListController',
       templateUrl: 'habit-list/habit-list.html',
+      auth: true
+    })
+    .state('create-habit', {
+      url: '/habits/create',
+      controller: 'CreateHabitController',
+      templateUrl: 'create-habit/create-habit.html',
       auth: true
     })
     .state('login', {

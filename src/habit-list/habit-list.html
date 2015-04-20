@@ -1,9 +1,9 @@
 <header class="page-header">
   <h1>Meine Habits</h1>
-  <nav><button ng-click="showNewHabitDialog()" class="primary">Neuer Habit</button></nav>
+  <nav><button ui-sref="create-habit" class="primary">Neuer Habit</button></nav>
 </header>
 <section class="page-body">
-  <ul class="habit-list">
+  <ul ng-if="habits.length" class="habit-list">
     <li class="habit-list-item" ng-repeat="habit in habits">
       <div class="level">{{habit.level}}</div>
       <div>
@@ -14,5 +14,8 @@
         <button>Failed</button>
       </nav>
     </li>
-  </ul class="habit-list">
+  </ul>
+  <div ng-if="!habits.length" class="empty-list">
+    <p>Du hast noch keine Habits angelegt.</p>
+  </div>
 </section>

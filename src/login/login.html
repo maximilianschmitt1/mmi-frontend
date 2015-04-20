@@ -1,20 +1,24 @@
-<h1>Login</h1>
-<form ng-hide="success" ng-submit="login(credentials || {})">
-  <div class="error-message" ng-show="error">
-    <p>Ungültige Anmeldedaten.</p>
+<header class="page-header">
+  <h1>Login</h1>
+</header>
+<section class="page-body">
+  <form ng-hide="success" ng-submit="login(credentials || {})">
+    <div class="error-message" ng-show="error">
+      <p>Ungültige Anmeldedaten.</p>
+    </div>
+    <div class="input-container">
+      <label>E-Mail</label>
+      <input type="email" autofocus ng-model="credentials.email">
+    </div>
+    <div class="input-container">
+      <label>Passwort</label>
+      <input type="password" ng-model="credentials.password">
+    </div>
+    <div class="submit-container">
+      <button class="primary" type="submit">Login</button>
+    </div>
+  </form>
+  <div class="success-message" ng-show="success">
+    <p>Du wurdest erfolgreich eingeloggt.</p>
   </div>
-  <div class="input-container">
-    <label>E-Mail</label>
-    <input type="email" autofocus ng-model="credentials.email">
-  </div>
-  <div class="input-container">
-    <label>Passwort</label>
-    <input type="password" ng-model="credentials.password">
-  </div>
-  <div class="input-container">
-    <button class="primary" type="submit">Login</button>
-  </div>
-</form>
-<div class="success-message" ng-show="success">
-  <p>Du wurdest erfolgreich eingeloggt.</p>
-</div>
+</section>
