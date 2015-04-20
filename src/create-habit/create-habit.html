@@ -3,9 +3,9 @@
 </header>
 <section class="page-body">
   <div class="success-message" ng-show="success">
-    <p>Habit erfolgreich angelegt.</p>
+    <p>Habit erfolgreich angelegt. <a ui-sref="dashboard">Zurück zur Übersicht</a>.</p>
   </div>
-  <form ng-submit="createHabit(habit || {})">
+  <form ng-submit="createHabit(habit)">
     <div class="error-message" ng-show="error">
       <p>Bitte stell sicher, dass du alle Felder richtig ausgefüllt hast.</p>
     </div>
@@ -15,7 +15,7 @@
     </div>
     <div class="input-container">
       <label>Dauer (in Tagen) *</label>
-      <input type="number" ng-model="habit.duration">
+      <input type="text" ng-model="habit.duration">
     </div>
     <div class="submit-container">
       <button class="primary" type="submit">Habit anlegen</button>

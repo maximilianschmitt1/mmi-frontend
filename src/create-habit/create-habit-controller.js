@@ -6,14 +6,14 @@ var CreateHabitController = function($scope, API_URL, $http) {
     duration: 66
   };
 
-  $scope.habit = Object.create(habitDefaults);
+  $scope.habit = habitDefaults;
 
   $scope.createHabit = function(habit) {
     $http
       .post(API_URL + '/habits', habit)
       .then(function(res) {
         $scope.success = true;
-        $scope.habit = Object.create(habitDefaults);
+        $scope.habit = habitDefaults;
       });
   };
 };
