@@ -2,19 +2,52 @@
   margin 0
   padding 0
   
-  .habit-list-item
+  li 
+    margin 0
+    list-style none
+
+  .habit-list-item .habit-overview
     @extends $row
     border-bottom 1px solid color-neutral
     padding 1em 0
     font-size 0.8em
-    margin 0
     
     .level
       flex 0 0 3em
       margin-right 2em
     
-    nav
-      display none
+    nav button
+      visibility hidden
     
-    &:hover nav
-      display block
+    &:hover nav button
+      visibility visible
+  
+.streak-box
+  @extends $clearfix
+  margin-top 1em
+  padding .5em
+  background color-neutral-background
+
+  .day
+    width 1.5em
+    height 1.5em
+    margin .25em
+    float left
+    border 1px solid color-neutral
+  
+  .day.pending
+    background #fff
+  
+  .day.fail
+    background color-fail
+    &.today
+      border-color darken(color-fail, 30)
+  
+  .day.success
+    background color-success
+    border-color color-success
+    &.today
+      border-color darken(color-success, 30)
+  
+  .day.today
+    border-width 3px

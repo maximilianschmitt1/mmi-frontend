@@ -5,14 +5,25 @@
 <section class="page-body">
   <ul ng-if="habits.length" class="habit-list">
     <li class="habit-list-item" ng-repeat="habit in habits">
-      <div class="level">{{habit.level}}</div>
-      <div>
-        <h2>{{habit.name}}</h2>
+      <div ng-click="toggleDetails(habit)" class="habit-overview">
+        <div class="level">{{habit.level}}</div>
+        <div>
+          <h2>{{habit.name}}</h2>
+        </div>
+        <nav>
+          <span ng-if="habit.today" class="activity-{{habit.today.type}}">
+            {{habit.today === 'success' ? 'Heute geschafft' : 'Heute verfehlt'}}
+          </span>
+          <button ng-if="!habit.today" ng-click="succeed(habit)" class="primary">Tagesziel erreicht</button>
+          <button ng-if="!habit.today" ng-click="fail(habit)">verfehlt</button>
+        </nav>
       </div>
-      <nav>
-        <button class="primary">Done</button>
-        <button>Failed</button>
-      </nav>
+      <div ng-if="isToggled(habit)" class="habit-detail">
+        <div>Du arbeitest seit {{habit.daysSince}} Tagen an diesem Habit.</div>
+        <div class="streak-box">
+          <div ng-repeat="day in habit.days" class="day {{day.type}} {{day.isToday ? 'today' : ''}}"></div>
+        </div>
+      </div>
     </li>
   </ul>
   <div ng-if="!habits.length" class="empty-list">
