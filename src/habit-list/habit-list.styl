@@ -6,22 +6,28 @@
     margin 0
     list-style none
 
+  .habit-list-item
+    border-bottom 1px solid color-neutral
+
   .habit-list-item .habit-overview
     @extends $row
-    border-bottom 1px solid color-neutral
+    font-size .8em
     padding 1em 0
-    font-size 0.8em
     
     .level
+      background white
       flex 0 0 3em
       margin-right 2em
-
-    nav button
-      visibility hidden
-
-    &:hover nav button
-      visibility visible
+    &:hover .habit-name
+      text-decoration underline
   
+  .habit-details
+    font-size .8em
+    padding 1em 0
+    margin-left 5em
+    > *:first-child
+      margin-top 0
+
 .streak-box
   @extends $clearfix
   margin-top 1em
