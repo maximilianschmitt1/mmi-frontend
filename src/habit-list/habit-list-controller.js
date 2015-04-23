@@ -41,14 +41,14 @@ var HabitListController = function($scope, $http, API_URL) {
   function parseHabit(habit) {
     var now = moment();
     habit.createdAt = moment(habit.createdAt);
-
-    Object.keys(habit.activities).forEach(function(key) {
+    const activities = Object.keys(habit.activities).map(function(key) {
       var activity = habit.activities[key];
       activity.time = moment(activity.time);
+      return activity;
     });
 
     habit.today = habit.activities[timeId(now)] ? habit.activities[timeId(now)].type : null;
-    habit.daysSince = moment(habit.createdAt).diff(moment(), 'days') + 1;
+    habit.daysSince = moment().hour(0).minute(0).second(1).diff(moment(habit.createdAt).hour(0).minute(0).second(1), 'days') + 1;
     habit.days = days(habit);
   }
 

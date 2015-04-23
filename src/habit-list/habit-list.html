@@ -6,7 +6,7 @@
   <ul ng-if="habits.length" class="habit-list">
     <li class="habit-list-item" ng-repeat="habit in habits">
       <div ng-click="toggleDetails(habit)" class="habit-overview">
-        <div class="level">{{habit.level}}</div>
+        <div class="level">{{habit.level.value}}</div>
         <div>
           <h2>{{habit.name}}</h2>
         </div>
