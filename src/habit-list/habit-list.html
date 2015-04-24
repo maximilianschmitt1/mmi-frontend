@@ -21,7 +21,7 @@
       <div ng-if="isToggled(habit)" class="habit-details">
         <p>Du arbeitest seit {{habit.daysSince}} Tagen an diesem Habit.</p>
         <div class="streak-box">
-          <div ng-repeat="day in habit.days" class="day {{day.type}} {{day.isToday ? 'today' : ''}}"></div>
+          <div ng-repeat="day in habit.days track by $index" class="day {{day.type}} {{day.isToday ? 'today' : ''}}"></div>
         </div>
       </div>
     </li>

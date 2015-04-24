@@ -41,11 +41,12 @@ var HabitListController = function($scope, $http, API_URL) {
   function parseHabit(habit) {
     var now = moment();
     habit.createdAt = moment(habit.createdAt);
-    const activities = Object.keys(habit.activities).map(function(key) {
-      var activity = habit.activities[key];
-      activity.time = moment(activity.time);
-      return activity;
-    });
+    const activities = Object.keys(habit.activities)
+      .map(function(key) {
+        var activity = habit.activities[key];
+        activity.time = moment(activity.time);
+        return activity;
+      });
 
     habit.today = habit.activities[timeId(now)] ? habit.activities[timeId(now)].type : null;
     habit.daysSince = moment().hour(0).minute(0).second(1).diff(moment(habit.createdAt).hour(0).minute(0).second(1), 'days') + 1;
@@ -56,9 +57,9 @@ var HabitListController = function($scope, $http, API_URL) {
     var habitDays = [];
     var totalDays = habit.duration;
     var today = habit.daysSince - 1;
-
     for (var day = 0; day < totalDays; day++) {
-      var activity = habit.activities[timeId(habit.createdAt.add(day, 'days'))];
+      var dayOfMonth = moment(habit.createdAt).hour(0).minute(0).second(1).add(day, 'days');
+      var activity = habit.activities[timeId(dayOfMonth)];
 
       if (activity) {
         activity.day = day + 1;
@@ -75,8 +76,7 @@ var HabitListController = function($scope, $http, API_URL) {
   }
 
   function timeId(m) {
-    var d = m.toDate();
-    return '' + d.getFullYear() + d.getMonth() + d.getDay();
+    return m.format('YYYYMMDD');
   }
 };
 
