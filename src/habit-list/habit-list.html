@@ -7,14 +7,14 @@
 </header>
 <section class="page-body">
   <ul ng-if="habits.length" class="habit-list">
-    <li ng-repeat="habit in habits" ng-class="{ 'habit-list-item': true, toggled: isToggled(habit) }">
+    <li ng-repeat="habit in habits" class="habit-today-{{habit.today}}" ng-class="{ 'habit-list-item': true, toggled: isToggled(habit) }">
       <div ng-click="toggleDetails(habit)" class="habit-overview">
         <div class="level">{{habit.level.value}}</div>
         <div class="habit-name">
           <h2>{{habit.name}}</h2>
         </div>
         <nav>
-          <span ng-if="habit.today" class="activity-{{habit.today.type}}">
+          <span ng-if="habit.today" class="activity-{{habit.today}}">
             {{habit.today === 'success' ? 'Du hast das Tagesziel geschafft!' : 'Du hast das Tagesziel heute verfehlt. Morgen hast du wieder eine Chance!'}}
           </span>
           <button ng-if="!habit.today" ng-click="succeed(habit); $event.stopPropagation()" class="primary">Tagesziel erreicht</button>
