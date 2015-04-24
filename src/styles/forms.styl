@@ -15,7 +15,21 @@ form
     input
       flex 1
       min-width 400px
-  
+
   .submit-container
     padding .5em 0
     text-align right
+
+form.inline
+  margin 0
+  max-width initial
+  @extends $row
+  .input-container
+    padding 0
+    min-width initial
+  .submit-container
+    padding 0
+    margin-left 1em
+    display inline-block
+    flex 0 auto
+    padding 0

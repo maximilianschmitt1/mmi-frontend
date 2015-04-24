@@ -8,6 +8,16 @@ var HabitListController = function($scope, $http, API_URL) {
 
   getHabits();
 
+  $scope.reload = getHabits;
+
+  $scope.showCreateHabitForm = function() {
+    $scope.createHabit = true;
+  };
+
+  $scope.hideCreateHabitForm = function() {
+    $scope.createHabit = false;
+  };
+
   $scope.toggleDetails = function(habit) {
     $scope.detailedHabit = $scope.detailedHabit === habit ? null : habit;
   };

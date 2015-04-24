@@ -1,6 +1,9 @@
 <header class="page-header">
   <h1>Meine Habits</h1>
-  <nav><button ui-sref="create-habit" class="primary">Neuer Habit</button></nav>
+  <nav>
+    <create-habit on-create="hideCreateHabitForm(); reload()" ng-if="createHabit"></create-habit>
+    <button ng-if="!createHabit" ng-click="showCreateHabitForm()" class="primary">Neuer Habit</button>
+  </nav>
 </header>
 <section class="page-body">
   <ul ng-if="habits.length" class="habit-list">

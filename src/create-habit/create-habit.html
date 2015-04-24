@@ -1,24 +1,8 @@
-<header class="page-header">
-  <h1>Neuen Habit anlegen</h1>
-</header>
-<section class="page-body">
-  <div class="success-message" ng-show="success">
-    <p>Habit erfolgreich angelegt. <a ui-sref="dashboard">Zurück zur Übersicht</a>.</p>
+<form class="inline" ng-submit="createHabit(habit)">
+  <div class="input-container">
+    <input placeholder="z.B.: Jeden Tag 2 Liter trinken" type="text" autofocus ng-model="habit.name">
   </div>
-  <form ng-submit="createHabit(habit)">
-    <div class="error-message" ng-show="error">
-      <p>Bitte stell sicher, dass du alle Felder richtig ausgefüllt hast.</p>
-    </div>
-    <div class="input-container">
-      <label>Name *</label>
-      <input placeholder="z.B.: Jeden Tag 2 Liter trinken" type="text" autofocus ng-model="habit.name">
-    </div>
-    <div class="input-container">
-      <label>Dauer (in Tagen) *</label>
-      <input type="text" ng-model="habit.duration">
-    </div>
-    <div class="submit-container">
-      <button class="primary" type="submit">Habit anlegen</button>
-    </div>
-  </form>
-</section>
+  <div class="submit-container">
+    <button class="primary" type="submit">Habit anlegen</button>
+  </div>
+</form>
