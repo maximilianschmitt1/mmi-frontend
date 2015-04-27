@@ -3,6 +3,7 @@
   "dependencies": {
     "ng-autofocus": "~0.0.1",
     "normalize.css": "~3.0.3",
-    "angular-ui-router": "~0.2.13"
+    "angular-ui-router": "~0.2.13",
+    "angular-modal-service": "~0.6.6"
   }
 }

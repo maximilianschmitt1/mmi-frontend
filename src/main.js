@@ -2,10 +2,11 @@
 
 require('ng-autofocus');
 require('angular-ui-router');
+require('angular-modal-service');
 
 var angular = require('angular');
 
-var app = angular.module('habit', ['ui.router', 'ng-autofocus']);
+var app = angular.module('habit', ['ui.router', 'ng-autofocus', 'angularModalService']);
 
 app.controller('AppController', function(authService, $state) {
   this.logout = authService.logout;
@@ -16,6 +17,8 @@ app.controller('SignupController', require('./signup/signup-controller'));
 app.controller('LoginController', require('./login/login-controller'));
 app.directive('createHabit', require('./create-habit/create-habit-directive'));
 app.directive('experienceBar', require('./experience-bar/experience-bar-directive'));
+app.directive('levelIndicator', require('./level-indicator/level-indicator-directive'));
+app.directive('modal', require('./modals/modal-directive'));
 app.service('authService', require('./auth/auth-service'));
 app.service('authRegistry', require('./auth/auth-registry'));
 app.factory('authTokenInjector', require('./auth/auth-token-injector'));

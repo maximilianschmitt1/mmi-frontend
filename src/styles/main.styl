@@ -2,6 +2,7 @@
 @import './common'
 @import './buttons'
 @import './forms'
+@import './modal'
 @import '../habit-list/habit-list'
 @import '../experience-bar/experience-bar'
 
@@ -47,7 +48,7 @@ h1, h2, h3, h4, h5, h6
 .error-message
   color red
 
-.level
+level-indicator
   background color-neutral-background
   border-radius 50%
   width 3em
@@ -73,6 +74,9 @@ a
   
   &.danger
     color color-fail
+
+p
+  line-height 1.6
 
 [ng-click]
   cursor pointer

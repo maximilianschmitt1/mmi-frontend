@@ -9,7 +9,7 @@
   <ul ng-if="habits.length" class="habit-list">
     <li ng-repeat="habit in habits" class="habit-today-{{habit.today}}" ng-class="{ 'habit-list-item': true, toggled: isToggled(habit) }">
       <div ng-click="toggleDetails(habit)" class="habit-overview">
-        <div class="level">{{habit.level.value}}</div>
+        <level-indicator habit="habit"></level-indicator>
         <div class="habit-name">
           <h2>{{habit.name}}</h2>
           <experience-bar habit="habit"></experience-bar>
