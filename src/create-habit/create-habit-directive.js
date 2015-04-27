@@ -1,11 +1,14 @@
 'use strict';
 
+var angular = require('angular');
+
 var createHabit = function(API_URL, $http) {
   return {
     restrict: 'E',
     templateUrl: '/create-habit/create-habit.html',
     scope: {
-      onCreate: '&'
+      onCreate: '&',
+      onCancel: '&'
     },
     link: function(scope, el, attrs) {
       var habitDefaults = {

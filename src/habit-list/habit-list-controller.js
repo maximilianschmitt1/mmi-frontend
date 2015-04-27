@@ -26,6 +26,16 @@ var HabitListController = function($scope, $http, API_URL) {
     return $scope.detailedHabit ? $scope.detailedHabit._id === habit._id : false;
   };
 
+  $scope.delete = function(habit) {
+    if (!window.confirm('Bist du sicher, dass du den Habit \'' + habit.name + '\' löschen möchtest?')) {
+      return;
+    }
+
+    return $http
+      .delete(API_URL + '/habits/' + habit._id)
+      .then(getHabits);
+  };
+
   $scope.succeed = function(habit) {
     return $http
       .post(API_URL + '/habits/' + habit._id + '/activity', { type: 'success' })

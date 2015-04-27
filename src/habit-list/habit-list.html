@@ -1,7 +1,7 @@
 <header class="page-header">
   <h1>Meine Habits</h1>
   <nav>
-    <create-habit on-create="hideCreateHabitForm(); reload()" ng-if="createHabit"></create-habit>
+    <create-habit on-cancel="hideCreateHabitForm();" on-create="hideCreateHabitForm(); reload()" ng-if="createHabit"></create-habit>
     <button ng-if="!createHabit" ng-click="showCreateHabitForm()" class="primary">Neuer Habit</button>
   </nav>
 </header>
@@ -26,6 +26,7 @@
         <div class="streak-box">
           <div ng-repeat="day in habit.days track by $index" class="day {{day.type}} {{day.isToday ? 'today' : ''}}"></div>
         </div>
+        <nav class="habit-options"><a class="danger" ng-click="delete(habit)">Habit löschen</a></nav>
       </div>
     </li>
   </ul>
