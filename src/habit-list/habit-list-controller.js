@@ -1,6 +1,7 @@
 'use strict';
 
 var assign = require('object.assign');
+var find = require('array-find');
 var moment = require('moment');
 
 var HabitListController = function($scope, $http, API_URL) {
@@ -60,6 +61,17 @@ var HabitListController = function($scope, $http, API_URL) {
 
   function parseHabit(habit) {
     var now = moment();
+
+    habit._before = find($scope.habits, function(oldHabit) {
+      return oldHabit._id === habit._id;
+    });
+
+    if (habit._before) {
+      if (habit._before.level.value < habit.level.value) {
+        habit.levelledUp = true;
+      }
+    }
+
     habit.createdAt = moment(habit.createdAt);
     const activities = Object.keys(habit.activities)
       .map(function(key) {

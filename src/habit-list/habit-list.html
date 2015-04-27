@@ -12,6 +12,7 @@
         <div class="level">{{habit.level.value}}</div>
         <div class="habit-name">
           <h2>{{habit.name}}</h2>
+          <experience-bar habit="habit"></experience-bar>
         </div>
         <nav>
           <span ng-if="habit.today" class="activity-{{habit.today}}">

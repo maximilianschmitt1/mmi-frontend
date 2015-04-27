@@ -15,6 +15,7 @@ app.controller('HabitListController', require('./habit-list/habit-list-controlle
 app.controller('SignupController', require('./signup/signup-controller'));
 app.controller('LoginController', require('./login/login-controller'));
 app.directive('createHabit', require('./create-habit/create-habit-directive'));
+app.directive('experienceBar', require('./experience-bar/experience-bar-directive'));
 app.service('authService', require('./auth/auth-service'));
 app.service('authRegistry', require('./auth/auth-registry'));
 app.factory('authTokenInjector', require('./auth/auth-token-injector'));
