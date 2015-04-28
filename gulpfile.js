@@ -34,7 +34,10 @@ gulp.task('styles', function() {
   return gulp
     .src('src/styles/main.styl')
     .pipe(stylus({
-      'import': '../../bower_components/normalize.css/normalize.css',
+      'import': [
+        '../../bower_components/normalize.css/normalize.css',
+        '../../bower_components/AnimateTransition/css/transitions.css'
+      ],
       'include css': true
     }))
     .on('error', n.error)
