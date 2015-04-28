@@ -15,13 +15,19 @@ app.controller('AppController', function(authService, $state) {
 app.controller('HabitListController', require('./habit-list/habit-list-controller'));
 app.controller('SignupController', require('./signup/signup-controller'));
 app.controller('LoginController', require('./login/login-controller'));
+
+app.directive('habitListItem', require('./habit-list-item/habit-list-item-directive'));
 app.directive('createHabit', require('./create-habit/create-habit-directive'));
 app.directive('experienceBar', require('./experience-bar/experience-bar-directive'));
 app.directive('levelIndicator', require('./level-indicator/level-indicator-directive'));
 app.directive('modal', require('./modals/modal-directive'));
+
+app.service('habitStore', require('./stores/habit-store'));
+
 app.service('authService', require('./auth/auth-service'));
 app.service('authRegistry', require('./auth/auth-registry'));
 app.factory('authTokenInjector', require('./auth/auth-token-injector'));
+
 app.constant('API_URL', 'http://192.168.55.55');
 
 app.config(function($stateProvider, $urlRouterProvider) {

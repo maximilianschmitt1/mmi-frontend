@@ -1,0 +1,25 @@
+<div class="habit-today-{{habit.today}}" ng-class="{ 'habit-list-item': true, toggled: toggled }">
+  <header ng-click="toggle()" class="habit-overview">
+    <level-indicator habit="habit"></level-indicator>
+    <div>
+      <div class="habit-name">
+        <span class="day-indicator">Tag {{habit.daysSince}}</span>
+        <h2>{{habit.name}}</h2>
+      </div>
+      <experience-bar habit="habit"></experience-bar>
+    </div>
+    <nav>
+      <span ng-if="habit.today">
+        {{habit.today === 'success' ? 'Du hast das Tagesziel geschafft!' : 'Du hast das Tagesziel heute verfehlt. Morgen hast du wieder eine Chance!'}}
+      </span>
+      <button ng-if="!habit.today" ng-click="succeed(habit); $event.stopPropagation()" class="primary">Tagesziel erreicht</button>
+      <button ng-if="!habit.today" ng-click="fail(habit); $event.stopPropagation()">verfehlt</button>
+    </nav>
+  </header>
+  <section ng-if="toggled" class="habit-details">
+    <div class="streak-box">
+      <div ng-repeat="day in habit.days track by $index" class="day {{day.type}} {{day.isToday ? 'today' : ''}}"></div>
+    </div>
+    <nav class="habit-options"><a class="danger" ng-click="delete(habit)">Habit löschen</a></nav>
+  </section>
+</div>

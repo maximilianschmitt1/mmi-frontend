@@ -6,30 +6,16 @@
   </nav>
 </header>
 <section class="page-body">
-  <ul ng-if="habits.length" class="habit-list">
-    <li ng-repeat="habit in habits" class="habit-today-{{habit.today}}" ng-class="{ 'habit-list-item': true, toggled: isToggled(habit) }">
-      <div ng-click="toggleDetails(habit)" class="habit-overview">
-        <level-indicator habit="habit"></level-indicator>
-        <div class="habit-name">
-          <h2>{{habit.name}}</h2>
-          <experience-bar habit="habit"></experience-bar>
-        </div>
-        <nav>
-          <span ng-if="habit.today" class="activity-{{habit.today}}">
-            {{habit.today === 'success' ? 'Du hast das Tagesziel geschafft!' : 'Du hast das Tagesziel heute verfehlt. Morgen hast du wieder eine Chance!'}}
-          </span>
-          <button ng-if="!habit.today" ng-click="succeed(habit); $event.stopPropagation()" class="primary">Tagesziel erreicht</button>
-          <button ng-if="!habit.today" ng-click="fail(habit); $event.stopPropagation()">verfehlt</button>
-        </nav>
-      </div>
-      <div ng-if="isToggled(habit)" class="habit-details">
-        <p>Du arbeitest seit {{habit.daysSince}} Tagen an diesem Habit.</p>
-        <div class="streak-box">
-          <div ng-repeat="day in habit.days track by $index" class="day {{day.type}} {{day.isToday ? 'today' : ''}}"></div>
-        </div>
-        <nav class="habit-options"><a class="danger" ng-click="delete(habit)">Habit löschen</a></nav>
-      </div>
-    </li>
+  <div ng-if="habits.length" class="habit-list">
+    <habit-list-item
+      ng-repeat="habit in habits"
+      habit="habit"
+      on-change="reload()"
+      toggled="isToggled(habit)"
+      toggle="toggleDetails(habit)"
+      >
+    </habit-list-item>
+  </div>
   </ul>
   <div ng-if="!habits.length" class="empty-list">
     <p>Du hast noch keine Habits angelegt.</p>

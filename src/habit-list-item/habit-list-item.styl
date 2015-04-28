@@ -1,0 +1,87 @@
+.habit-today-success .day-indicator
+  @extends $badge-success
+
+.habit-today-fail .day-indicator
+  @extends $badge-fail
+
+.habit-today-pending .day-indicator
+  @extends $badge
+
+.habit-list-item
+  border-bottom 1px solid color-neutral-background
+
+  .habit-overview
+    @extends $row
+    padding 1rem 0
+    font-size .9rem
+
+    h2
+      display inline-block
+    
+    .habit-name
+      display flex
+      align-items center
+    
+    .day-indicator
+      margin-right .8rem
+
+    level-indicator
+      font-size 1rem
+      flex 0 0 3rem
+      margin-right 1.5rem
+      height 3rem
+
+    &:hover h2
+      text-decoration underline
+
+  .habit-details
+    padding-bottom 1rem
+    margin-left 4.5rem
+    > *:first-child
+      margin-top 0
+
+  .habit-options
+    margin-top 1rem
+    text-align left
+    font-size .9rem
+
+  .experience-bar
+    margin-top .7rem
+    width 50%
+
+  .activity-success
+    color color-success
+
+  .activity-fail
+    color color-fail
+
+.streak-box
+  @extends $clearfix
+  margin-top 1rem
+  padding .5rem
+  background color-neutral-background
+
+  .day
+    width 1.5rem
+    height 1.5rem
+    margin .25rem
+    float left
+  
+  .day.pending
+    background #fff
+  
+  .day.fail
+    background color-fail
+    &.today
+      border-color darken(color-fail, 30)
+  
+  .day.success
+    background color-success
+    border-color color-success
+    &.today
+      border-color darken(color-success, 30)
+  
+  .day.today
+    border-color color-neutral
+    border-width 3px
+    border-style solid
