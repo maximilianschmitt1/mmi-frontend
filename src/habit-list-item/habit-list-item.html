@@ -9,7 +9,7 @@
       <experience-bar habit="habit"></experience-bar>
     </div>
     <nav>
-      <span ng-if="habit.today">
+      <span class="activity" ng-if="habit.today">
         {{habit.today === 'success' ? 'Du hast das Tagesziel geschafft!' : 'Du hast das Tagesziel heute verfehlt. Morgen hast du wieder eine Chance!'}}
       </span>
       <button ng-if="!habit.today" ng-click="succeed(habit); $event.stopPropagation()" class="primary">Tagesziel erreicht</button>

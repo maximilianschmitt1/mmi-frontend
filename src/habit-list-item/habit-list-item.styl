@@ -49,11 +49,12 @@
     margin-top .7rem
     width 50%
 
-  .activity-success
-    color color-success
-
-  .activity-fail
-    color color-fail
+  .activity
+    visibility hidden
+    color color-neutral
+  
+  &:hover .activity
+    visibility visible
 
 .streak-box
   @extends $clearfix
