@@ -30,11 +30,10 @@
     </nav>
   </header>
   <section ng-if="toggled" class="habit-details">
-    <h3>Achievements</h3>
     <div class="achievements">
       <img ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-speed="fast" tooltip-title="{{achievement.title}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
       <ul class="stats">
-        <li><span class="highlight">{{habit.achievedAchievements.length}}</span> von <span class="highlight">{{habit.achievements.length}}</span> Achievements freigeschaltet.</li>
+        <li><span class="highlight">{{habit.achievedAchievements.length}}</span> von <span class="highlight">{{habit.achievements.length}}</span> Achievements freigeschaltet. (<a href="#" class="neutral">Wie schalte ich Achievements frei?</a>)</li>
       </ul>
     </div>
     <h3>Statistiken</h3>
