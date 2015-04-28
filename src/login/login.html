@@ -2,7 +2,7 @@
   <h1>Login</h1>
 </header>
 <section class="page-body">
-  <form ng-hide="success" ng-submit="login(credentials || {})">
+  <form role="form" ng-hide="success" ng-submit="login(credentials || {})">
     <div class="error-message" ng-show="error">
       <p>Ungültige Anmeldedaten.</p>
     </div>
@@ -15,7 +15,7 @@
       <input name="password" type="password" ng-model="credentials.password">
     </div>
     <div class="submit-container">
-      <button class="primary" type="submit">Login</button>
+      <input class="primary" type="submit" value="Login">
     </div>
   </form>
   <div class="success-message" ng-show="success">

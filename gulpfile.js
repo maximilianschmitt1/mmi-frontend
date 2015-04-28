@@ -1,14 +1,15 @@
 'use strict';
 
-var gulp       = require('gulp');
-var browserify = require('browserify');
-var source     = require('vinyl-source-stream');
-var stylus     = require('gulp-stylus');
-var rename     = require('gulp-rename');
-var sequence   = require('run-sequence');
-var statik     = require('statik');
-var notifier   = require('stream-notifier');
-var watchify   = require('watchify');
+var gulp         = require('gulp');
+var browserify   = require('browserify');
+var source       = require('vinyl-source-stream');
+var stylus       = require('gulp-stylus');
+var rename       = require('gulp-rename');
+var autoprefixer = require('gulp-autoprefixer');
+var sequence     = require('run-sequence');
+var statik       = require('statik');
+var notifier     = require('stream-notifier');
+var watchify     = require('watchify');
 
 gulp.task('browserify', function() {
   var bundler = browserify('./src/main')
@@ -42,6 +43,7 @@ gulp.task('styles', function() {
       'include css': true
     }))
     .on('error', n.error)
+    .pipe(autoprefixer())
     .pipe(rename('app.css'))
     .pipe(gulp.dest('dist'))
     .on('end', n.end);
