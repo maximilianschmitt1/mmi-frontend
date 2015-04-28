@@ -1,16 +1,16 @@
-<div class="habit-today-{{habit.today || 'pending'}}" ng-class="{ 'habit-list-item': true, toggled: toggled, faded: !allCollapsed && !toggled }">
+<div class="habit-today-{{::habit.today || 'pending'}}" ng-class="{ 'habit-list-item': true, toggled: toggled, faded: !allCollapsed && !toggled }">
   <header ng-click="toggle()" class="habit-overview">
     <level-indicator tooltips tooltip-speed="fast" tooltip-title="Level" habit="habit"></level-indicator>
     <div>
       <div class="habit-name">
         <span
           tooltips tooltip-speed="fast"
-          tooltip-title="Tagesziel {{habit.today === 'success' ? 'erreicht' : habit.today === 'fail' ? 'nicht erreicht' : 'ausstehend'}}" 
+          tooltip-title="Tagesziel {{::habit.today === 'success' ? 'erreicht' : habit.today === 'fail' ? 'nicht erreicht' : 'ausstehend'}}" 
           class="day-indicator"
           >
-            Tag {{habit.daysSince}}
+            Tag {{::habit.daysSince}}
           </span>
-        <h2>{{habit.name}}</h2>
+        <h2>{{::habit.name}}</h2>
         <span class="delete-habit-link">
           <a class="danger" ng-click="delete(habit); $event.stopPropagation()">Habit löschen</a>
         </span>
@@ -18,12 +18,12 @@
       <experience-bar
         tooltips tooltip-speed="fast"
         tooltip-side="bottom"
-        tooltip-title="{{habit.xp}} / {{habit.level.xpForNextLevel}} XP"
+        tooltip-title="{{::habit.xp}} / {{::habit.level.xpForNextLevel}} XP"
         habit="habit"></experience-bar>
     </div>
     <nav>
       <span class="activity-status" ng-if="habit.today">
-        {{habit.today === 'success' ? 'Du hast das Tagesziel erreicht!' : 'Du hast das Tagesziel heute nicht erreicht. Morgen hast du wieder eine Chance!'}}
+        {{::habit.today === 'success' ? 'Du hast das Tagesziel erreicht!' : 'Du hast das Tagesziel heute nicht erreicht. Morgen hast du wieder eine Chance!'}}
       </span>
       <button ng-if="!habit.today" ng-click="succeed(habit); $event.stopPropagation()" class="primary">Tagesziel erreicht</button>
       <button ng-if="!habit.today" ng-click="fail(habit); $event.stopPropagation()">verfehlt</button>
@@ -31,23 +31,23 @@
   </header>
   <section ng-if="toggled" class="habit-details">
     <div class="achievements">
-      <img ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-speed="fast" tooltip-title="{{achievement.title}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
+      <img ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-speed="fast" tooltip-title="{{::achievement.title}}" ng-src="{{::achievement.icon}}" alt="{{::achievement.title}}">
       <ul class="stats">
-        <li><span class="highlight">{{habit.achievedAchievements.length}}</span> von <span class="highlight">{{habit.achievements.length}}</span> Achievements freigeschaltet. (<a href="#" class="neutral">Wie schalte ich Achievements frei?</a>)</li>
+        <li><span class="highlight">{{::habit.achievedAchievements.length}}</span> von <span class="highlight">{{::habit.achievements.length}}</span> Achievements freigeschaltet. (<a href="#" class="neutral">Wie schalte ich Achievements frei?</a>)</li>
       </ul>
     </div>
     <h3>Statistiken</h3>
     <div class="streak-box">
       <div
         tooltips tooltip-speed="fast"
-        tooltip-title="Tag {{day.day}} (Tagesziel {{day.type === 'success' ? 'erreicht' : day.type === 'fail' ? 'nicht erreicht' : 'ausstehend'}})"
+        tooltip-title="Tag {{::day.day}} (Tagesziel {{::day.type === 'success' ? 'erreicht' : day.type === 'fail' ? 'nicht erreicht' : 'ausstehend'}})"
         ng-repeat="day in habit.days track by $index"
-        class="day {{day.type}} {{day.isToday ? 'today' : ''}}">
+        class="day {{::day.type}} {{::day.isToday ? 'today' : ''}}">
       </div>
     </div>
     <ul class="stats">
-      <li><span class="highlight">Tage insgesamt:</span> {{habit.daysSince}}</li>
-      <li><span class="highlight">Erfolgsrate:</span> <span tooltips tooltip-title="Gestern: {{habit.lastSuccessRate}}%" tooltip-speed="fast"><img class="success-rate-development" ng-src="/habit-list-item/icons/success-rate-development-{{habit.successRateDevelopment}}.svg" alt=""> {{habit.successRate}}%</span></li>
+      <li><span class="highlight">Tage insgesamt:</span> {{::habit.daysSince}}</li>
+      <li><span class="highlight">Erfolgsrate:</span> <span tooltips tooltip-title="Gestern: {{::habit.lastSuccessRate}}%" tooltip-speed="fast"><img class="success-rate-development" ng-src="/habit-list-item/icons/success-rate-development-{{::habit.successRateDevelopment}}.svg" alt=""> {{::habit.successRate}}%</span></li>
       <li><span class="highlight">Aktuelle Erfolgsserie:</span> <ng-pluralize count="habit.currentStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
       <li><span class="highlight">Längste andauerende Erfolgsserie:</span> <ng-pluralize count="habit.longestStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
     </ul>
