@@ -23,7 +23,6 @@ var HabitListController = function($scope, habitStore) {
 
   $scope.reload = function() {
     habitStore.list().then(function(habits) {
-      $scope.detailedHabit = habits[0];
       $scope.habits = habits;
     });
   };
