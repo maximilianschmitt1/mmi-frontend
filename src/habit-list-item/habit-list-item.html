@@ -20,7 +20,7 @@
     </div>
     <nav>
       <span class="activity-status" ng-if="habit.today">
-        {{::habit.today === 'success' ? 'Du hast das Tagesziel erreicht!' : 'Du hast das Tagesziel heute nicht erreicht. Morgen hast du wieder eine Chance!'}}
+        {{::habit.today === 'success' ? 'Du hast das Tagesziel erreicht!' : 'Du hast das Tagesziel nicht erreicht.'}}
       </span>
       <button ng-if="!habit.today" ng-click="succeed(habit); $event.stopPropagation()" class="primary">Tagesziel erreicht</button>
       <button ng-if="!habit.today" ng-click="fail(habit); $event.stopPropagation()">verfehlt</button>
