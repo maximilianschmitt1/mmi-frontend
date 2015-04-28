@@ -41,6 +41,7 @@ function parseHabit(habit) {
   }
 
   habit.createdAt = moment(habit.createdAt);
+
   var activities = Object.keys(habit.activities)
     .map(function(key) {
       var activity = habit.activities[key];

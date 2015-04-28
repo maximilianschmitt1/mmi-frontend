@@ -11,10 +11,12 @@ var experienceBar = function() {
 
       var progress = el.children()[0];
 
-      if (habit.levelledUp) {
+      if (!habit.level.animated && habit.levelledUp) {
         animateOverLevel(progress, habit);
-      } else if (habit._before && habit._before.xp !== habit.xp) {
+        habit.level.animated = true;
+      } else if (!habit.level.animated && habit._before && habit._before.xp !== habit.xp) {
         animateXpGain(progress, habit);
+        habit.level.animated = true;
       } else {
         progress.style.width = xpPercentage(habit);
       }
@@ -23,7 +25,7 @@ var experienceBar = function() {
 };
 
 function xpPercentage(habit) {
-  var goal = habit.level.xpForNextLevel;
+  var goal = habit.level.xp;
   var current = habit.xp;
   var percent = Math.round((current / goal) * 100);
   
