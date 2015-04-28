@@ -3,6 +3,10 @@
 var HabitListController = function($scope, habitStore) {
   $scope.habits = [];
 
+  $scope.allCollapsed = function() {
+    return !$scope.detailedHabit;
+  };
+
   $scope.toggleDetails = function(habit) {
     $scope.detailedHabit = $scope.detailedHabit === habit ? null : habit;
   };

@@ -9,7 +9,8 @@ var habitListItem = function($http, API_URL, ModalService) {
       onChange: '&',
       habit: '=',
       toggled: '=',
-      toggle: '&'
+      toggle: '&',
+      allCollapsed: '='
     },
     link: function(scope, el, attrs) {
       var habit = scope.habit;

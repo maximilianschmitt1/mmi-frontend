@@ -52,6 +52,7 @@ function parseHabit(habit) {
   habit.failedDays = habit.days.filter(function(day) { return day.type === 'fail'; });
   habit.successRate = Math.ceil((habit.successfulDays.length / habit.daysSince) * 100);
   habit.achievements = achievements(habit);
+  habit.achievedAchievements = habit.achievements.filter(function(achievement) { return achievement.achieved; });
   habit.newAchievements = newAchievements(habit);
 }
 

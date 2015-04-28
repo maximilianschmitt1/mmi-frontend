@@ -1,4 +1,4 @@
-<div class="habit-today-{{habit.today || 'pending'}}" ng-class="{ 'habit-list-item': true, toggled: toggled }">
+<div class="habit-today-{{habit.today || 'pending'}}" ng-class="{ 'habit-list-item': true, toggled: toggled, faded: !allCollapsed && !toggled }">
   <header ng-click="toggle()" class="habit-overview">
     <level-indicator tooltips tooltip-title="Level" habit="habit"></level-indicator>
     <div>
@@ -11,6 +11,9 @@
             Tag {{habit.daysSince}}
           </span>
         <h2>{{habit.name}}</h2>
+        <span class="delete-habit-link">
+          <a class="danger" ng-click="delete(habit); $event.stopPropagation()">Habit löschen</a>
+        </span>
       </div>
       <experience-bar
         tooltips
@@ -27,9 +30,14 @@
     </nav>
   </header>
   <section ng-if="toggled" class="habit-details">
+    <h3>Achievements</h3>
     <div class="achievements">
       <img ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-title="{{achievement.title}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
+      <ul class="stats">
+        <li><span class="highlight">{{habit.achievedAchievements.length}}</span> von <span class="highlight">{{habit.achievements.length}}</span> Achievements freigeschaltet.</li>
+      </ul>
     </div>
+    <h3>Statistiken</h3>
     <div class="streak-box">
       <div
         tooltips
@@ -38,11 +46,11 @@
         class="day {{day.type}} {{day.isToday ? 'today' : ''}}">
       </div>
     </div>
-    <ul class="streak-stats">
-      <li><span class="title">Erfolgsrate:</span> {{habit.successRate}}%</li>
-      <li><span class="title">Aktuelle Erfolgsserie:</span> <ng-pluralize count="habit.currentStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
-      <li><span class="title">Längste andauerende Erfolgsserie:</span> <ng-pluralize count="habit.longestStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
+    <ul class="stats">
+      <li><span class="highlight">Tage insgesamt:</span> {{habit.daysSince}}</li>
+      <li><span class="highlight">Erfolgsrate:</span> {{habit.successRate}}%</li>
+      <li><span class="highlight">Aktuelle Erfolgsserie:</span> <ng-pluralize count="habit.currentStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
+      <li><span class="highlight">Längste andauerende Erfolgsserie:</span> <ng-pluralize count="habit.longestStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
     </ul>
-    <nav class="habit-options"><a class="danger" ng-click="delete(habit)">Habit löschen</a></nav>
   </section>
 </div>
