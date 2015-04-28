@@ -4,6 +4,7 @@ var LevelUpModal = require('../modals/level-up/level-up-modal');
 var AchievementModal = require('../modals/achievement/achievement-modal');
 
 var habitListItem = function($http, API_URL, ModalService, $q) {
+  console.log('use this to animate detail slide: http://jsfiddle.net/3sVz8/19/');
   return {
     templateUrl: '/habit-list-item/habit-list-item.html',
     scope: {

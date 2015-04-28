@@ -8,8 +8,9 @@
   @extends .badge-neutral
 
 .habit-list-item
-  border-bottom 1px solid color-neutral-background
-  
+  &.toggled
+    border-bottom 1px solid color-neutral-background
+    
   .habit-settings
     border-top 1px solid color-neutral-background
     padding-top 1rem
@@ -18,27 +19,39 @@
   h2
     font-size 1.3rem
     display inline-block
+    transition font-size .1s
   
   &.toggled h2
     font-size 2rem
   
   .day-indicator
     margin-left .8rem
+    transition font-size .1s
     
   &.faded .day-indicator
     visibility hidden
   
   &.toggled .day-indicator
     font-size 1rem
+    
+  &.toggled .habit-overview experience-bar
+    margin-top 0
+    .progress
+      height 0
 
   .habit-overview
     @extends $row
+    border-bottom 1px solid color-neutral-background
     padding 1rem 0
+    height 5rem
     font-size .9rem
     
     experience-bar
+      transition margin-top .1s
       margin-top .7rem
       max-width 40rem
+      .progress
+        transition height .1s
     
     nav
       flex 0 auto
@@ -55,9 +68,6 @@
 
     &:hover h2
       text-decoration underline
-  
-  &.toggled .habit-overview
-    border-bottom 1px solid color-neutral-background
   
   &.faded .habit-overview nav
     visibility hidden
