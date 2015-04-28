@@ -31,5 +31,5 @@
 ### Icons
 
 * Achievement "Guter Start": [Iconfinder](https://www.iconfinder.com/icons/298861/rocket_icon)
-* Achievement "Halbzeit": [Iconfinder](https://www.iconfinder.com/icons/284053/fastfood_food_pizza_icon)
+* Achievement "Halbzeit": [Iconfinder](https://www.iconfinder.com/icons/103264/fast_food_icon)
 * Achievement "Habit erfolgreich abgeschlossen": [Iconfinder](https://www.iconfinder.com/icons/316221/trophy_icon)
