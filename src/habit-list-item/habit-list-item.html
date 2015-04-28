@@ -47,7 +47,7 @@
     </div>
     <ul class="stats">
       <li><span class="highlight">Tage insgesamt:</span> {{habit.daysSince}}</li>
-      <li><span class="highlight">Erfolgsrate:</span> {{habit.successRate}}%</li>
+      <li><span class="highlight">Erfolgsrate:</span> <span tooltips tooltip-title="Gestern: {{habit.lastSuccessRate}}%" tooltip-speed="fast"><img class="success-rate-development" ng-src="/habit-list-item/icons/success-rate-development-{{habit.successRateDevelopment}}.svg" alt=""> {{habit.successRate}}%</span></li>
       <li><span class="highlight">Aktuelle Erfolgsserie:</span> <ng-pluralize count="habit.currentStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
       <li><span class="highlight">Längste andauerende Erfolgsserie:</span> <ng-pluralize count="habit.longestStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
     </ul>

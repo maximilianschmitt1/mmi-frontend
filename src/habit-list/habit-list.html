@@ -11,6 +11,7 @@
       ng-repeat="habit in habits"
       habit="habit"
       on-change="reload()"
+      on-delete="untoggle(habit)"
       toggled="isToggled(habit)"
       toggle="toggleDetails(habit)"
       all-collapsed="allCollapsed()"

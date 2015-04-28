@@ -15,6 +15,12 @@ var HabitListController = function($scope, habitStore) {
     return $scope.detailedHabit ? $scope.detailedHabit._id === habit._id : false;
   };
 
+  $scope.untoggle = function(habit) {
+    if ($scope.detailedHabit && $scope.detailedHabit._id === habit._id) {
+      $scope.detailedHabit = null;
+    }
+  };
+
   $scope.reload = function() {
     habitStore.list().then(function(habits) {
       $scope.habits = habits;

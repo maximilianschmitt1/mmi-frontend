@@ -10,7 +10,8 @@ var habitListItem = function($http, API_URL, ModalService) {
       habit: '=',
       toggled: '=',
       toggle: '&',
-      allCollapsed: '='
+      allCollapsed: '=',
+      onDelete: '&'
     },
     link: function(scope, el, attrs) {
       var habit = scope.habit;
@@ -34,6 +35,7 @@ var habitListItem = function($http, API_URL, ModalService) {
 
         return $http
           .delete(API_URL + '/habits/' + habit._id)
+          .then(scope.onDelete)
           .then(scope.onChange);
       };
 
