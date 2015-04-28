@@ -36,7 +36,8 @@ gulp.task('styles', function() {
     .pipe(stylus({
       'import': [
         '../../bower_components/normalize.css/normalize.css',
-        '../../bower_components/AnimateTransition/css/transitions.css'
+        '../../bower_components/AnimateTransition/css/transitions.css',
+        '../../bower_components/angular-tooltips/src/css/angular-tooltips.css'
       ],
       'include css': true
     }))

@@ -5,6 +5,7 @@
     "normalize.css": "~3.0.3",
     "angular-ui-router": "~0.2.13",
     "angular-modal-service": "~0.6.6",
-    "AnimateTransition": "Rapid-Application-Development-JS/AnimateTransition"
+    "AnimateTransition": "Rapid-Application-Development-JS/AnimateTransition",
+    "angular-tooltips": "~0.1.9"
   }
 }

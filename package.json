@@ -4,11 +4,16 @@
     "ng-autofocus": "./bower_components/ng-autofocus/dist/ng-autofocus.js",
     "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
     "angular-modal-service": "./bower_components/angular-modal-service/dst/angular-modal-service.js",
-    "animate-transition": "./bower_components/AnimateTransition/src/animateTransition.js"
+    "animate-transition": "./bower_components/AnimateTransition/src/animateTransition.js",
+    "angular-tooltips": "./bower_components/angular-tooltips/src/js/angular-tooltips.js"
   },
   "browserify-shim": {
     "angular": "angular",
     "animate-transition": "AnimateTransition",
+    "angular-tooltips": {
+      "exports": null,
+      "depends": "angular"
+    },
     "angular-ui-router": {
       "exports": null,
       "depends": "angular"
