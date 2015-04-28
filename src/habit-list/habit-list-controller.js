@@ -1,6 +1,6 @@
 'use strict';
 
-var HabitListController = function($scope, habitStore) {
+var HabitListController = function($scope, habitStore, ModalService) {
   $scope.habits = [];
 
   $scope.allCollapsed = function() {
@@ -22,7 +22,9 @@ var HabitListController = function($scope, habitStore) {
   };
 
   $scope.reload = function() {
+    $scope.loading = true;
     habitStore.list().then(function(habits) {
+      $scope.loading = false;
       $scope.habits = habits;
     });
   };

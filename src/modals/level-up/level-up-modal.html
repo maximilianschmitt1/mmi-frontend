@@ -1,4 +1,7 @@
-<modal>
+<modal class="level-up-modal">
   <h1>Level Up!</h1>
-  <p>Du hast für '{{habit.name}}' Level {{habit.level.value}} erreicht!</p>
+  <section class="modal-body">
+    <span class="level">{{::habit.level.value}}</span>
+    <p>Du hast für "<strong>{{::habit.name}}</strong>" Level <strong>{{::habit.level.value}}</strong> erreicht. Sammle weiter XP, um noch höhere Level zu erreichen!</p>
+  </section>
 </modal>

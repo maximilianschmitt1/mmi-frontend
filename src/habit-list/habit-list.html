@@ -19,7 +19,10 @@
     </habit-list-item>
   </div>
   </ul>
-  <div ng-if="!habits.length" class="empty-list">
+  <div ng-if="!habits.length && !loading" class="empty-list">
     <p>Du hast noch keine Habits angelegt.</p>
+  </div>
+  <div ng-if="!habits.length && loading">
+    <p>Habits werden geladen...</p>
   </div>
 </section>
