@@ -27,6 +27,9 @@
     </nav>
   </header>
   <section ng-if="toggled" class="habit-details">
+    <div class="achievements">
+      <img ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-title="{{achievement.title}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
+    </div>
     <div class="streak-box">
       <div
         tooltips
@@ -36,8 +39,9 @@
       </div>
     </div>
     <ul class="streak-stats">
-      <li><span class="title">Aktuelle Erfolgsserie:</span> {{habit.currentStreak}} Tage</li>
-      <li><span class="title">Längste andauerende Erfolgsserie:</span> {{habit.longestStreak}} Tage</li>
+      <li><span class="title">Erfolgsrate:</span> {{habit.successRate}}%</li>
+      <li><span class="title">Aktuelle Erfolgsserie:</span> <ng-pluralize count="habit.currentStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
+      <li><span class="title">Längste andauerende Erfolgsserie:</span> <ng-pluralize count="habit.longestStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
     </ul>
     <nav class="habit-options"><a class="danger" ng-click="delete(habit)">Habit löschen</a></nav>
   </section>

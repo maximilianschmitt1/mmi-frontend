@@ -51,7 +51,7 @@ gulp.task('views', function() {
   var n = notifier('views');
 
   return gulp
-    .src('src/**/*.html')
+    .src(['src/**/*.html', 'src/**/*.svg'])
     .pipe(gulp.dest('dist'))
     .on('end', n.end);
 });
@@ -62,7 +62,7 @@ gulp.task('serve', function() {
 
 gulp.task('watch', ['watchify'], function() {
   gulp.watch('src/**/*.styl', ['styles']);
-  gulp.watch('src/**/*.html', ['views']);
+  gulp.watch(['src/**/*.html', 'src/**/*.svg'], ['views']);
 });
 
 gulp.task('build', ['browserify', 'styles', 'views']);

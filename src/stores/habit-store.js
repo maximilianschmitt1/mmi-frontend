@@ -2,6 +2,7 @@
 
 var moment = require('moment');
 var find = require('array-find');
+var achievementList = require('../achievements/achievements');
 
 var habits = [];
 
@@ -47,6 +48,11 @@ function parseHabit(habit) {
   habit.days = days(habit);
   habit.longestStreak = longestStreak(habit);
   habit.currentStreak = currentStreak(habit);
+  habit.successfulDays = habit.days.filter(function(day) { return day.type === 'success'; });
+  habit.failedDays = habit.days.filter(function(day) { return day.type === 'fail'; });
+  habit.successRate = Math.ceil((habit.successfulDays.length / habit.daysSince) * 100);
+  habit.achievements = achievements(habit);
+  habit.newAchievements = newAchievements(habit);
 }
 
 function days(habit) {
@@ -69,6 +75,27 @@ function days(habit) {
   }
 
   return habitDays;
+}
+
+function achievements(habit) {
+  return achievementList.map(function(achievement) {
+    return {
+      title: achievement.title,
+      description: achievement.description,
+      icon: achievement.icon,
+      achieved: achievement.check(habit)
+    };
+  });
+}
+
+function newAchievements(habit) {
+  if (!habit._before) {
+    return [];
+  }
+
+  return habit.achievements.filter(function(achievement, i) {
+    return achievement.achieved && !habit._before.achievements[i].achieved;
+  });
 }
 
 function longestStreak(habit) {
