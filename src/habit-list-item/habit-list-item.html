@@ -1,4 +1,4 @@
-<div class="habit-today-{{habit.today}}" ng-class="{ 'habit-list-item': true, toggled: toggled }">
+<div class="habit-today-{{habit.today || 'pending'}}" ng-class="{ 'habit-list-item': true, toggled: toggled }">
   <header ng-click="toggle()" class="habit-overview">
     <level-indicator habit="habit"></level-indicator>
     <div>
