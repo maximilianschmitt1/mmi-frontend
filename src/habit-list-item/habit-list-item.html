@@ -11,9 +11,6 @@
             Tag {{::habit.daysSince}}
           </span>
         <h2>{{::habit.name}}</h2>
-        <span class="delete-habit-link">
-          <a class="danger" ng-click="delete(habit); $event.stopPropagation()">Habit löschen</a>
-        </span>
       </div>
       <experience-bar
         tooltips tooltip-speed="fast"
@@ -51,5 +48,8 @@
       <li><span class="highlight">Aktuelle Erfolgsserie:</span> <ng-pluralize count="habit.currentStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
       <li><span class="highlight">Längste andauerende Erfolgsserie:</span> <ng-pluralize count="habit.longestStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
     </ul>
+    <div class="habit-settings">
+      <a class="danger" ng-click="delete(habit); $event.stopPropagation()">Habit löschen</a>
+    </div>
   </section>
 </div>
