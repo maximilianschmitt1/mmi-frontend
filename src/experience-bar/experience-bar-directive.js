@@ -9,7 +9,7 @@ var experienceBar = function() {
     link: function(scope, el, attrs) {
       var habit = scope.habit;
 
-      var progress = el.children()[0].children[0];
+      var progress = el.children()[0];
 
       if (habit.levelledUp) {
         animateOverLevel(progress, habit);

@@ -12,7 +12,11 @@
           </span>
         <h2>{{habit.name}}</h2>
       </div>
-      <experience-bar habit="habit"></experience-bar>
+      <experience-bar
+        tooltips
+        tooltip-side="bottom"
+        tooltip-title="{{habit.xp}} / {{habit.level.xpForNextLevel}} XP"
+        habit="habit"></experience-bar>
     </div>
     <nav>
       <span class="activity-status" ng-if="habit.today">
@@ -24,8 +28,17 @@
   </header>
   <section ng-if="toggled" class="habit-details">
     <div class="streak-box">
-      <div tooltips tooltip-title="Tag {{day.day}} (Tagesziel {{day.type === 'success' ? 'erreicht' : day.type === 'fail' ? 'nicht erreicht' : 'ausstehend'}})" ng-repeat="day in habit.days track by $index" class="day {{day.type}} {{day.isToday ? 'today' : ''}}"></div>
+      <div
+        tooltips
+        tooltip-title="Tag {{day.day}} (Tagesziel {{day.type === 'success' ? 'erreicht' : day.type === 'fail' ? 'nicht erreicht' : 'ausstehend'}})"
+        ng-repeat="day in habit.days track by $index"
+        class="day {{day.type}} {{day.isToday ? 'today' : ''}}">
+      </div>
     </div>
+    <ul class="streak-stats">
+      <li><span class="title">Aktuelle Erfolgsserie:</span> {{habit.currentStreak}} Tage</li>
+      <li><span class="title">Längste andauerende Erfolgsserie:</span> {{habit.longestStreak}} Tage</li>
+    </ul>
     <nav class="habit-options"><a class="danger" ng-click="delete(habit)">Habit löschen</a></nav>
   </section>
 </div>

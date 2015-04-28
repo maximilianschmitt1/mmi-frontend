@@ -45,6 +45,8 @@ function parseHabit(habit) {
   habit.today = habit.activities[timeId(now)] ? habit.activities[timeId(now)].type : null;
   habit.daysSince = moment().hour(0).minute(0).second(1).diff(moment(habit.createdAt).hour(0).minute(0).second(1), 'days') + 1;
   habit.days = days(habit);
+  habit.longestStreak = longestStreak(habit);
+  habit.currentStreak = currentStreak(habit);
 }
 
 function days(habit) {
@@ -67,6 +69,37 @@ function days(habit) {
   }
 
   return habitDays;
+}
+
+function longestStreak(habit) {
+  var longest = 0;
+  var current = 0;
+
+  habit.days.forEach(function(day) {
+    if (day.type === 'success') {
+      current++;
+    } else {
+      current = 0;
+      return;
+    }
+
+    if (current > longest) {
+      longest = current;
+    }
+  });
+
+  return longest;
+}
+
+function currentStreak(habit) {
+  var today = habit.daysSince - 1;
+  var streak = 0;
+
+  while (habit.days[today - streak] && habit.days[today - streak].type === 'success') {
+    streak++;
+  }
+
+  return streak;
 }
 
 function timeId(m) {
