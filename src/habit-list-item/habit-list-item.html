@@ -1,10 +1,10 @@
 <div class="habit-today-{{habit.today || 'pending'}}" ng-class="{ 'habit-list-item': true, toggled: toggled, faded: !allCollapsed && !toggled }">
   <header ng-click="toggle()" class="habit-overview">
-    <level-indicator tooltips tooltip-title="Level" habit="habit"></level-indicator>
+    <level-indicator tooltips tooltip-speed="fast" tooltip-title="Level" habit="habit"></level-indicator>
     <div>
       <div class="habit-name">
         <span
-          tooltips
+          tooltips tooltip-speed="fast"
           tooltip-title="Tagesziel {{habit.today === 'success' ? 'erreicht' : habit.today === 'fail' ? 'nicht erreicht' : 'ausstehend'}}" 
           class="day-indicator"
           >
@@ -16,7 +16,7 @@
         </span>
       </div>
       <experience-bar
-        tooltips
+        tooltips tooltip-speed="fast"
         tooltip-side="bottom"
         tooltip-title="{{habit.xp}} / {{habit.level.xpForNextLevel}} XP"
         habit="habit"></experience-bar>
@@ -32,7 +32,7 @@
   <section ng-if="toggled" class="habit-details">
     <h3>Achievements</h3>
     <div class="achievements">
-      <img ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-title="{{achievement.title}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
+      <img ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-speed="fast" tooltip-title="{{achievement.title}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
       <ul class="stats">
         <li><span class="highlight">{{habit.achievedAchievements.length}}</span> von <span class="highlight">{{habit.achievements.length}}</span> Achievements freigeschaltet.</li>
       </ul>
@@ -40,7 +40,7 @@
     <h3>Statistiken</h3>
     <div class="streak-box">
       <div
-        tooltips
+        tooltips tooltip-speed="fast"
         tooltip-title="Tag {{day.day}} (Tagesziel {{day.type === 'success' ? 'erreicht' : day.type === 'fail' ? 'nicht erreicht' : 'ausstehend'}})"
         ng-repeat="day in habit.days track by $index"
         class="day {{day.type}} {{day.isToday ? 'today' : ''}}">
