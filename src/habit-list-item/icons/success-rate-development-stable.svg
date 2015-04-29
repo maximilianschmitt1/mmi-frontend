@@ -5,8 +5,8 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="success-rate-development-stable" sketch:type="MSArtboardGroup" fill="#999999">
-            <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="0" y="4" width="12" height="4"></rect>
+        <g id="success-rate-development-stable" sketch:type="MSArtboardGroup" fill="#8E9BA5">
+            <rect id="Rectangle-1" sketch:type="MSShapeGroup" x="0" y="4" width="12" height="4" rx="1"></rect>
         </g>
     </g>
 </svg>

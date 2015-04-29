@@ -64,7 +64,7 @@ function parseHabit(habit) {
   habit.failedDays = habit.days.filter(function(day) { return day.type === 'fail'; });
   habit.successRate = round((habit.successfulDays.length / habit.daysSince) * 100);
   habit.lastSuccessRate = round((habit.successfulDays.filter(function(day) { return !day.isToday ;}).length / ((habit.daysSince - 1) || 1))  * 100);
-  habit.successRateDevelopment = habit.successRate > habit.lastSuccessRate ? 'increase' : habit.successRate > habit.lastSuccessRate ? 'decrease' : 'stable';
+  habit.successRateDevelopment = habit.successRate > habit.lastSuccessRate ? 'increase' : habit.successRate < habit.lastSuccessRate ? 'decrease' : 'stable';
   habit.achievements = achievements(habit);
   habit.achievedAchievements = habit.achievements.filter(function(achievement) { return achievement.achieved; });
   habit.newAchievements = newAchievements(habit);

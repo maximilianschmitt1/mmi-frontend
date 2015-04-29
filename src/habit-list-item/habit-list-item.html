@@ -34,7 +34,7 @@
       <button ng-if="correctingTodaysActivity" ng-click="stopCorrectingTodaysActivity(); $event.stopPropagation()">Abbrechen</button>
     </nav>
   </header>
-  <section ng-slide-down="toggled || false" lazy-render duration="0.1" class="habit-details">
+  <section ng-slide-down="toggled || false" lazy-render timing-function="linear" duration="0.1" class="habit-details">
     <section class="habit-detail">
       <h3>Erfahrungspunkte</h3>
       <experience-bar
