@@ -6,6 +6,7 @@
     "angular-ui-router": "~0.2.13",
     "angular-modal-service": "~0.6.6",
     "AnimateTransition": "Rapid-Application-Development-JS/AnimateTransition",
-    "angular-tooltips": "~0.1.9"
+    "angular-tooltips": "~0.1.9",
+    "ng-slide-down": "~0.3.1"
   }
 }

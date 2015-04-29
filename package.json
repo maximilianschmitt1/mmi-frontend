@@ -5,11 +5,16 @@
     "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
     "angular-modal-service": "./bower_components/angular-modal-service/dst/angular-modal-service.js",
     "animate-transition": "./bower_components/AnimateTransition/src/animateTransition.js",
-    "angular-tooltips": "./bower_components/angular-tooltips/src/js/angular-tooltips.js"
+    "angular-tooltips": "./bower_components/angular-tooltips/src/js/angular-tooltips.js",
+    "ng-slide-down": "./bower_components/ng-slide-down/dist/ng-slide-down.js"
   },
   "browserify-shim": {
     "angular": "angular",
     "animate-transition": "AnimateTransition",
+    "ng-slide-down": {
+      "exports": null,
+      "depends": "angular"
+    },
     "angular-tooltips": {
       "exports": null,
       "depends": "angular"

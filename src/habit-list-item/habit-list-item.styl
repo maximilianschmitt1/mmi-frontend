@@ -38,6 +38,10 @@
     margin-top 0
     .progress
       height 0
+      
+  .habit-overview:hover, &.toggled .habit-overview
+    padding-bottom calc(1rem - 3px)
+    border-bottom-width 4px
 
   .habit-overview
     @extends $row
@@ -66,10 +70,6 @@
       flex 0 0 3rem
       margin-right 1.5rem
       height 3rem
-
-    &:hover
-      padding-bottom calc(1rem - 3px)
-      border-bottom-width 4px
 
   .habit-details
     padding 0 0 1rem

@@ -4,10 +4,11 @@ require('ng-autofocus');
 require('angular-ui-router');
 require('angular-modal-service');
 require('angular-tooltips');
+require('ng-slide-down');
 
 var angular = require('angular');
 
-var app = angular.module('habit', ['ui.router', 'ng-autofocus', 'angularModalService', '720kb.tooltips']);
+var app = angular.module('habit', ['ui.router', 'ng-autofocus', 'angularModalService', '720kb.tooltips', 'ng-slide-down']);
 
 app.controller('AppController', function(authService, $state) {
   this.logout = authService.logout;
