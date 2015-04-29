@@ -24,6 +24,7 @@ var tooltip = /* @ngInject */ function($compile) {
           if (attrs.tooltipPosition) {
             return;
           }
+
           var offset = elementOffset($el.tooltipster('elementTooltip'));
           if (offset.left < 20) {
             $el.tooltipster('option', 'position', 'top-left');
