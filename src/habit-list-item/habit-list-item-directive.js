@@ -18,6 +18,17 @@ var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
     link: function(scope, el, attrs) {
       scope.$watch('habit', queueModals);
 
+      scope.rename = function() {
+        var name = window.prompt('Habit umbenennen:', scope.habit.name);
+        if (name === scope.habit.name) {
+          return;
+        }
+
+        $http
+          .put(API_URL + '/habits/' + scope.habit._id, { name: name })
+          .then(scope.onChange);
+      };
+
       scope.correctTodaysActivity = function() {
         scope.correctingTodaysActivity = true; 
       };

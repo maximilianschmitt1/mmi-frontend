@@ -70,8 +70,9 @@
         <li><strong>Längste andauerende Erfolgsserie:</strong> <ng-pluralize count="habit.longestStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
       </ul>
     </section>
-    <div class="habit-settings">
+    <nav class="habit-settings">
+      <a ng-click="rename(); $event.stopPropagation()">Habit umbenennen</a>
       <a class="danger" ng-click="delete(habit); $event.stopPropagation()">Habit löschen</a>
-    </div>
+    </nav>
   </section>
 </div>
