@@ -3,6 +3,8 @@
 var LevelUpModal = require('../modals/level-up/level-up-modal');
 var AchievementModal = require('../modals/achievement/achievement-modal');
 var assign = require('object.assign');
+var scroll2 = require('scroll');
+var mobile = require('is-mobile')(navigator.userAgent);
 
 var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
   return {
@@ -17,6 +19,16 @@ var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
     },
     link: function(scope, el, attrs) {
       scope.$watch('habit', queueModals);
+
+      if (mobile) {
+        scope.$watch('toggled', function(toggled) {
+          window.setTimeout(function() {
+            if (toggled) {
+              scroll2.top(document.body, offsetTop(el[0]));
+            }
+          }, 1);
+        });
+      }
 
       scope.rename = function() {
         var name = window.prompt('Habit umbenennen:', scope.habit.name);
@@ -119,5 +131,11 @@ var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
     }, Promise.resolve());
   }
 };
+
+function offsetTop(element) {
+  var de = document.documentElement;
+  var box = element.getBoundingClientRect();
+  return box.top + window.pageYOffset - de.clientTop;
+}
 
 module.exports = habitListItem;

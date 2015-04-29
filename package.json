@@ -57,8 +57,10 @@
   },
   "dependencies": {
     "array-find": "^0.1.1",
+    "fastclick": "^1.0.6",
     "moment": "^2.10.2",
     "object.assign": "^2.0.1",
+    "scroll": "0.0.3",
     "velocity-animate": "^1.2.2"
   }
 }

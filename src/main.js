@@ -6,6 +6,7 @@ require('angular-modal-service');
 require('angular-tooltips');
 require('ng-slide-down');
 
+var fastclick = require('fastclick');
 var angular = require('angular');
 
 var app = angular.module('habit', ['ui.router', 'ng-autofocus', 'angularModalService', '720kb.tooltips', 'ng-slide-down']);
@@ -88,3 +89,7 @@ app.run(function(authRegistry, $rootScope, $state) {
 app.config(function($httpProvider) {
   $httpProvider.interceptors.push('authTokenInjector');
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  fastclick(document.body);
+}, false);
