@@ -1,6 +1,6 @@
 <div class="habit-today-{{habit.today || 'pending'}}" ng-class="{ 'habit-list-item': true, toggled: toggled, faded: !allCollapsed && !toggled }">
   <header ng-click="toggle()" class="habit-overview">
-    <level-indicator tooltips tooltip-speed="fast" tooltip-title="Level" habit="habit"></level-indicator>
+    <level-indicator tooltip="Level" tooltip-position="top" habit="habit"></level-indicator>
     <div>
       <div class="habit-name">
         <h2>{{habit.name}}</h2>
@@ -10,8 +10,7 @@
     </div>
     <nav>
       <span
-        tooltips
-        tooltip-title="Zum Korrigieren klicken!"
+        tooltip="Zum Korrigieren klicken!"
         ng-click="correctTodaysActivity(); $event.stopPropagation()"
         class="activity-status"
         ng-if="habit.today && !correctingTodaysActivity">
@@ -47,7 +46,7 @@
     <section class="habit-detail">
       <h3>Achievements</h3>
       <div class="achievements">
-        <img class="achievement" ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-speed="fast" tooltip-title="{{achievement.description}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
+        <img class="achievement" ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltip="{{achievement.description}}" tooltip-position="{{$index === 0 ? 'top-left' : 'top'}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
       </div>
       <ul class="stats">
         <li><strong>{{habit.achievedAchievements.length}}</strong> von <strong>{{habit.achievements.length}}</strong> Achievements freigeschaltet.</li>
@@ -57,15 +56,14 @@
       <h3>Statistiken</h3>
       <div class="streak-box">
         <div
-          tooltips tooltip-speed="fast"
-          tooltip-title="Tag {{day.day}} (Tagesziel {{day.type === 'success' ? 'erreicht' : day.type === 'fail' ? 'nicht erreicht' : 'ausstehend'}})"
+          tooltip="{{day.day}}. Tagesziel {{day.type === 'success' ? 'erreicht' : day.type === 'fail' ? 'nicht erreicht' : 'ausstehend'}}"
           ng-repeat="day in habit.days track by $index"
           class="day {{day.type}} {{day.isToday ? 'today' : ''}}">
         </div>
       </div>
       <ul class="stats">
         <li><strong>Tage insgesamt:</strong> {{habit.daysSince}}</li>
-        <li><strong>Erfolgsrate:</strong> <span tooltips tooltip-title="Gestern: {{habit.lastSuccessRate}}%" tooltip-speed="fast"><img class="success-rate-development" ng-src="/habit-list-item/icons/success-rate-development-{{habit.successRateDevelopment}}.svg" alt=""> {{habit.successRate}}%</span></li>
+        <li><strong>Erfolgsrate:</strong> <span tooltip="Gestern: {{habit.lastSuccessRate}}%"><img class="success-rate-development" ng-src="/habit-list-item/icons/success-rate-development-{{habit.successRateDevelopment}}.svg" alt=""> {{habit.successRate}}%</span></li>
         <li><strong>Aktuelle Erfolgsserie:</strong> <ng-pluralize count="habit.currentStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
         <li><strong>Längste andauerende Erfolgsserie:</strong> <ng-pluralize count="habit.longestStreak" when="{'one': '1 Tag', 'other': '{} Tage'}"></ng-pluralize></li>
       </ul>

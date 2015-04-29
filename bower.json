@@ -6,6 +6,7 @@
     "angular-ui-router": "~0.2.13",
     "angular-modal-service": "~0.6.6",
     "AnimateTransition": "Rapid-Application-Development-JS/AnimateTransition",
-    "angular-tooltips": "https://github.com/maximilianschmitt/angular-tooltips.git#0.1.10"
+    "tooltipster": "~3.3.0",
+    "jquery": "~2.1.4"
   }
 }

@@ -1,15 +1,16 @@
 'use strict';
 
+require('jquery');
+require('tooltipster');
 require('ng-autofocus');
 require('angular-ui-router');
 require('angular-modal-service');
-require('angular-tooltips');
 require('ng-slide-down');
 
 var fastclick = require('fastclick');
 var angular = require('angular');
 
-var app = angular.module('habit', ['ui.router', 'ng-autofocus', 'angularModalService', '720kb.tooltips', 'ng-slide-down']);
+var app = angular.module('habit', ['ui.router', 'ng-autofocus', 'angularModalService', 'ng-slide-down']);
 
 app.controller('AppController', function(authService, $state) {
   this.logout = authService.logout;
@@ -19,6 +20,7 @@ app.controller('HabitListController', require('./habit-list/habit-list-controlle
 app.controller('SignupController', require('./signup/signup-controller'));
 app.controller('LoginController', require('./login/login-controller'));
 
+app.directive('tooltip', require('./tooltip/tooltip'));
 app.directive('habitListItem', require('./habit-list-item/habit-list-item-directive'));
 app.directive('createHabit', require('./create-habit/create-habit-directive'));
 app.directive('experienceBar', require('./experience-bar/experience-bar-directive'));
@@ -31,8 +33,8 @@ app.service('authService', require('./auth/auth-service'));
 app.service('authRegistry', require('./auth/auth-registry'));
 app.factory('authTokenInjector', require('./auth/auth-token-injector'));
 
-// app.constant('API_URL', 'http://192.168.55.55');
-app.constant('API_URL', 'http://b0eba1e.ngrok.com');
+app.constant('API_URL', 'http://192.168.55.55');
+// app.constant('API_URL', 'http://b0eba1e.ngrok.com');
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
