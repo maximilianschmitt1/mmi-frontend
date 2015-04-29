@@ -35,6 +35,7 @@ var tooltip = /* @ngInject */ function($compile) {
             return;
           }
           
+          // hack to fix a weird bug where top-right isnt positioned properly
           window.requestAnimationFrame(function() { $el.tooltipster('reposition'); });
         }
       });
