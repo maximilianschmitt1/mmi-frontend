@@ -7,6 +7,11 @@ var modal = function() {
     transclude: true,
     templateUrl: '/modals/modal.html',
     link: function(scope, el, attrs) {
+      var overflow = document.body.style.overflow;
+      var height = document.body.style.height;
+      document.body.style.overflow = 'hidden';
+      document.body.style.height = '100%';
+
       var backdrop = el[0].children[0];
 
       animateTransition({
@@ -23,6 +28,12 @@ var modal = function() {
           onTransitionEnd: el.scope().close
         });
       };
+
+      scope.$on('$destroy', function() {
+        console.log('resetting to', overflow, height);
+        document.body.style.overflow = overflow;
+        document.body.style.height = height;
+      });
     }
   };
 };

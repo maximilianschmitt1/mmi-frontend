@@ -13,10 +13,8 @@ var experienceBar = function() {
 
       if (!habit.level.animated && habit.levelledUp) {
         animateOverLevel(progress, habit);
-        habit.level.animated = true;
       } else if (!habit.level.animated && habit._before && habit._before.xp !== habit.xp) {
         animateXpGain(progress, habit);
-        habit.level.animated = true;
       } else {
         progress.style.width = xpPercentage(habit);
       }
@@ -42,13 +40,15 @@ function animateOverLevel(progress, habit) {
 
   function nextLevel() {
     progress.style.width = 0;
-    return Velocity.animate(progress, { width: xpPercentage(habit) }, 1000);
+    return Velocity.animate(progress, { width: xpPercentage(habit) }, 1000)
+      .then(function() { habit.level.animated = true; });
   }
 }
 
 function animateXpGain(progress, habit) {
   progress.style.width = xpPercentage(habit._before);
-  return Velocity.animate(progress, { width: xpPercentage(habit) }, 1000);
+  return Velocity.animate(progress, { width: xpPercentage(habit) }, 1000)
+    .then(function() { habit.level.animated = true; });
 }
 
 module.exports = experienceBar;
