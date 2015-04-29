@@ -1,11 +1,13 @@
 'use strict';
 
 var angular = require('angular');
+var mobile = require('is-mobile')(navigator.userAgent);
 
-var createHabit = function(API_URL, $http) {
+var createHabitDirective = function(API_URL, $http) {
   return {
     restrict: 'E',
-    templateUrl: '/create-habit/create-habit.html',
+    templateUrl: !mobile ? '/create-habit/create-habit.html' : null,
+    template: mobile ? '' : null,
     scope: {
       onCreate: '&',
       onCancel: '&'
@@ -19,7 +21,18 @@ var createHabit = function(API_URL, $http) {
         name: habitDefaults.name
       };
 
-      scope.createHabit = function(habit) {
+      scope.createHabit = createHabit;
+
+      if (mobile) {
+        var habit = { name: window.prompt('Was nimmst du dir vor?', 'z.B. Jeden Tag 2 Liter Wasser trinken') };
+        if (!habit.name) {
+          scope.onCancel();
+          return;
+        }
+        createHabit(habit);
+      }
+
+      function createHabit(habit) {
         $http
           .post(API_URL + '/habits', habit)
           .then(function(res) {
@@ -29,9 +42,9 @@ var createHabit = function(API_URL, $http) {
 
             scope.onCreate();
           });
-      };
+      }
     }
   };
 };
 
-module.exports = createHabit;
+module.exports = createHabitDirective;
