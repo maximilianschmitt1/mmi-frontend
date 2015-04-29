@@ -2,7 +2,7 @@ button, input[type="submit"]
   line-height 1
   background none
   padding .7em 1em
-  border-width 1px
+  border-width 2px
   border-radius 2px
   border-style solid
   border-color color-neutral
@@ -17,3 +17,17 @@ button, input[type="submit"]
     &:hover
       color white
       background color-primary
+  
+  &.success
+    border-color color-success
+    color color-success
+    &:hover
+      color white
+      background color-success
+
+  &.fail
+    border-color color-fail
+    color color-fail
+    &:hover
+      color white
+      background color-fail

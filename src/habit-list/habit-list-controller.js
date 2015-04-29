@@ -1,5 +1,7 @@
 'use strict';
 
+var find = require('array-find');
+
 var HabitListController = function($scope, habitStore, ModalService) {
   $scope.habits = [];
 
@@ -15,8 +17,8 @@ var HabitListController = function($scope, habitStore, ModalService) {
     return $scope.detailedHabit ? $scope.detailedHabit._id === habit._id : false;
   };
 
-  $scope.untoggle = function(habit) {
-    if ($scope.detailedHabit && $scope.detailedHabit._id === habit._id) {
+  $scope.delete = function(deleted) {
+    if ($scope.detailedHabit && $scope.detailedHabit._id === deleted._id) {
       $scope.detailedHabit = null;
     }
   };

@@ -7,17 +7,19 @@ var experienceBar = function() {
   return {
     templateUrl: '/experience-bar/experience-bar.html',
     link: function(scope, el, attrs) {
-      var habit = scope.habit;
-
       var progress = el.children()[0];
 
-      if (!habit.level.animated && habit.levelledUp) {
-        animateOverLevel(progress, habit);
-      } else if (!habit.level.animated && habit._before && habit._before.xp !== habit.xp) {
-        animateXpGain(progress, habit);
-      } else {
-        progress.style.width = xpPercentage(habit);
+      function animate(habit) {
+        if (!habit.level.animated && habit.levelledUp) {
+          animateOverLevel(progress, habit);
+        } else if (!habit.level.animated && habit._before && habit._before.xp !== habit.xp) {
+          animateXpGain(progress, habit);
+        } else {
+          progress.style.width = xpPercentage(habit);
+        }
       }
+
+      scope.$watch('habit', animate);
     }
   };
 };

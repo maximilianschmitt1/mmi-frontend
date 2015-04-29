@@ -30,7 +30,6 @@ var modal = function() {
       };
 
       scope.$on('$destroy', function() {
-        console.log('resetting to', overflow, height);
         document.body.style.overflow = overflow;
         document.body.style.height = height;
       });

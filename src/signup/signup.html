@@ -1,36 +1,38 @@
-<header class="page-header">
-  <h1>Registrieren</h1>
-</header>
-<section class="page-body">
-  <form ng-hide="success" ng-submit="signup(user || {})">
-    <div class="error-message" ng-show="error">
-      <p>Bitte stell sicher, dass du alle Felder ausgefüllt hast und die von dir gewählte E-Mail-Adresse noch nicht vergeben ist.</p>
+<div class="thin">
+  <header class="page-header">
+    <h1>Registrieren</h1>
+  </header>
+  <section class="page-body">
+    <form ng-hide="success" ng-submit="signup(user || {})">
+      <div class="error-message" ng-show="error">
+        <p>Bitte stell sicher, dass du alle Felder ausgefüllt hast und die von dir gewählte E-Mail-Adresse noch nicht vergeben ist.</p>
+      </div>
+      <div class="input-container">
+        <label>Vorname *</label>
+        <input type="text" autofocus ng-model="user.firstName">
+      </div>
+      <div class="input-container">
+        <label>Nachname *</label>
+        <input type="text" ng-model="user.lastName">
+      </div>
+      <div class="input-container">
+        <label>E-Mail *</label>
+        <input type="email" ng-model="user.email">
+      </div>
+      <div class="input-container">
+        <label>Passwort (mind. 6 Zeichen) *</label>
+        <input type="password" ng-model="user.password">
+      </div>
+      <div class="input-container">
+        <label>Passwort bestätigen *</label>
+        <input type="password" ng-model="user.passwordConfirmation">
+      </div>
+      <div class="submit-container">
+        <button class="primary" type="submit">Registrieren</button>
+      </div>
+    </form>
+    <div class="success-message" ng-show="success">
+      <p>Deine Registrierung war erfolgreich.</p>
     </div>
-    <div class="input-container">
-      <label>Vorname *</label>
-      <input type="text" autofocus ng-model="user.firstName">
-    </div>
-    <div class="input-container">
-      <label>Nachname *</label>
-      <input type="text" ng-model="user.lastName">
-    </div>
-    <div class="input-container">
-      <label>E-Mail *</label>
-      <input type="email" ng-model="user.email">
-    </div>
-    <div class="input-container">
-      <label>Passwort (mind. 6 Zeichen) *</label>
-      <input type="password" ng-model="user.password">
-    </div>
-    <div class="input-container">
-      <label>Passwort bestätigen *</label>
-      <input type="password" ng-model="user.passwordConfirmation">
-    </div>
-    <div class="input-container">
-      <button class="primary" type="submit">Registrieren</button>
-    </div>
-  </form>
-  <div class="success-message" ng-show="success">
-    <p>Deine Registrierung war erfolgreich.</p>
-  </div>
-</section>
+  </section>
+</div>

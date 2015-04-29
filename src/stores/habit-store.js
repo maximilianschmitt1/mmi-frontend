@@ -13,6 +13,9 @@ var habits = [];
 
 var habitStore = function($http, API_URL) {
   return {
+    get: function(habitId) {
+      return $http.get(API_URL + '/habits/' + habitId).then(function(res) { return parseHabit(res.data.habit); });
+    },
     list: function() {
       return $http.get(API_URL + '/habits').then(parseHabits);
 
@@ -30,11 +33,9 @@ module.exports = habitStore;
 function parseHabit(habit) {
   var now = moment();
 
-  habit._before = find(habits, function(oldHabit) {
-    return oldHabit._id === habit._id;
-  });
+  habit._before = find(habits, function(oldHabit) { return oldHabit._id === habit._id; });
 
-  if (habit._before) {
+  if (habit._before && habit._before.level) {
     if (habit._before.level.value < habit.level.value) {
       habit.levelledUp = true;
     }
@@ -62,6 +63,8 @@ function parseHabit(habit) {
   habit.achievements = achievements(habit);
   habit.achievedAchievements = habit.achievements.filter(function(achievement) { return achievement.achieved; });
   habit.newAchievements = newAchievements(habit);
+
+  return habit;
 }
 
 function days(habit) {

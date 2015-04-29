@@ -2,9 +2,9 @@
 
 var LevelUpModal = require('../modals/level-up/level-up-modal');
 var AchievementModal = require('../modals/achievement/achievement-modal');
+var assign = require('object.assign');
 
-var habitListItem = function($http, API_URL, ModalService, $q) {
-  console.log('use this to animate detail slide: http://jsfiddle.net/3sVz8/19/');
+var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
   return {
     templateUrl: '/habit-list-item/habit-list-item.html',
     scope: {
@@ -16,8 +16,15 @@ var habitListItem = function($http, API_URL, ModalService, $q) {
       onDelete: '&'
     },
     link: function(scope, el, attrs) {
-      var habit = scope.habit;
-      queueModals(habit);
+      scope.$watch('habit', queueModals);
+
+      scope.correctTodaysActivity = function() {
+        scope.correctingTodaysActivity = true; 
+      };
+
+      scope.stopCorrectingTodaysActivity = function() {
+        scope.correctingTodaysActivity = false; 
+      };
 
       scope.delete = function(habit) {
         if (!window.confirm('Bist du sicher, dass du den Habit \'' + habit.name + '\' löschen möchtest?')) {

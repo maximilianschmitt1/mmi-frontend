@@ -8,10 +8,10 @@
 <section class="page-body">
   <div ng-if="habits.length" class="habit-list">
     <habit-list-item
-      ng-repeat="habit in habits"
+      ng-repeat="habit in habits track by habit._id"
       habit="habit"
       on-change="reload()"
-      on-delete="untoggle(habit)"
+      on-delete="delete(habit)"
       toggled="isToggled(habit)"
       toggle="toggleDetails(habit)"
       all-collapsed="allCollapsed()"
