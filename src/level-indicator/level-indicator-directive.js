@@ -9,7 +9,7 @@ var levelIndicator = function($timeout) {
       function animateLevel() {
         var habit = scope.habit;
 
-        if (habit.levelledUp) {
+        if (habit.levelChanged) {
           scope.level = habit._before.level.value;
           $timeout(setLevel, 1000);
         } else {

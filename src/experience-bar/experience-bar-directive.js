@@ -10,7 +10,7 @@ var experienceBar = function() {
       var progress = el.children()[0];
 
       function animate(habit) {
-        if (!habit.level.animated && habit.levelledUp) {
+        if (!habit.level.animated && habit.levelChanged) {
           animateOverLevel(progress, habit);
         } else if (!habit.level.animated && habit._before && habit._before.xp !== habit.xp) {
           animateXpGain(progress, habit);
@@ -38,10 +38,11 @@ function xpPercentage(habit) {
 
 function animateOverLevel(progress, habit) {
   progress.style.width = xpPercentage(habit._before);
-  return Velocity.animate(progress, { width: '100%' }, 1000).then(nextLevel);
+  var fromPercent = habit.levelledUp ? 100 : 0;
+  return Velocity.animate(progress, { width: fromPercent + '%' }, 1000).then(nextLevel);
 
   function nextLevel() {
-    progress.style.width = 0;
+    progress.style.width = Math.abs(fromPercent - 100) + '%';
     return Velocity.animate(progress, { width: xpPercentage(habit) }, 1000)
       .then(function() { habit.level.animated = true; });
   }

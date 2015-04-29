@@ -1,4 +1,4 @@
-'use strict';
++'use strict';
 
 var moment = require('moment');
 var find = require('array-find');
@@ -36,8 +36,13 @@ function parseHabit(habit) {
   habit._before = find(habits, function(oldHabit) { return oldHabit._id === habit._id; });
 
   if (habit._before && habit._before.level) {
+    habit.levelChanged = true;
     if (habit._before.level.value < habit.level.value) {
       habit.levelledUp = true;
+    } else if (habit._before.level.value > habit.level.value) {
+      habit.levelledDown = true;
+    } else {
+      habit.levelChanged = false;
     }
   }
 
