@@ -45,6 +45,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-stylus": "^2.0.1",
     "run-sequence": "^1.0.2",
+    "rupture": "^0.6.1",
     "statik": "^1.4.6",
     "stream-notifier": "0.0.1",
     "vinyl-source-stream": "^1.1.0",

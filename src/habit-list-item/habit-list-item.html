@@ -47,11 +47,11 @@
     <section class="habit-detail">
       <h3>Achievements</h3>
       <div class="achievements">
-        <img ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-speed="fast" tooltip-title="{{achievement.description}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
-        <ul class="stats">
-          <li><strong>{{habit.achievedAchievements.length}}</strong> von <strong>{{habit.achievements.length}}</strong> Achievements freigeschaltet.</li>
-        </ul>
+        <img class="achievement" ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltips tooltip-speed="fast" tooltip-title="{{achievement.description}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
       </div>
+      <ul class="stats">
+        <li><strong>{{habit.achievedAchievements.length}}</strong> von <strong>{{habit.achievements.length}}</strong> Achievements freigeschaltet.</li>
+      </ul>
     </section>
     <section class="habit-detail">
       <h3>Statistiken</h3>

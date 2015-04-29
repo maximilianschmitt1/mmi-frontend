@@ -4,8 +4,9 @@ var gulp         = require('gulp');
 var browserify   = require('browserify');
 var source       = require('vinyl-source-stream');
 var stylus       = require('gulp-stylus');
-var rename       = require('gulp-rename');
 var autoprefixer = require('gulp-autoprefixer');
+var rupture      = require('rupture');
+var rename       = require('gulp-rename');
 var sequence     = require('run-sequence');
 var statik       = require('statik');
 var notifier     = require('stream-notifier');
@@ -35,6 +36,7 @@ gulp.task('styles', function() {
   return gulp
     .src('src/styles/main.styl')
     .pipe(stylus({
+      'use': [rupture()],
       'import': [
         '../../bower_components/normalize.css/normalize.css',
         '../../bower_components/AnimateTransition/css/transitions.css',

@@ -1,6 +1,4 @@
 form
-  max-width 600px
-  
   input
     height 2.5em
     padding 0 .7em
@@ -40,3 +38,18 @@ form.inline
     padding 0
     button
       margin-left .25rem
+
++mobile()
+  form
+    .input-container
+      display block
+      label
+        margin-bottom .5em
+      input, label
+        display block
+        min-width initial
+        width 100%
+    .submit-container
+      text-align center
+      button, input
+        width 100%

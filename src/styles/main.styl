@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6
 
 strong
   color color-primary-text
-  
+
 .wrapper
   margin 0 1em
 
@@ -41,6 +41,9 @@ strong
   .wrapper
     @extends $row
     height 3.5rem
+    
+    nav
+      flex 0 auto
     
   h1
     color white
@@ -103,3 +106,9 @@ p
 
 [ng-click]
   cursor pointer
+
++mobile()
+  .wrapper 
+    margin 0 .5em
+  .thin
+    max-width initial

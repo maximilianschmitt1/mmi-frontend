@@ -33,9 +33,6 @@
   .day-indicator
     margin-left .8rem
     transition font-size .1s
-  
-  // &.toggled .day-indicator
-  //   font-size 1rem
     
   &.toggled .habit-overview experience-bar
     margin-top 0
@@ -156,3 +153,58 @@
   .achieved
     fill: color-success
     opacity 1
+
++mobile()
+  .habit-list-item
+    .habit-details
+      margin-left 0
+      .stats
+        li
+          display block
+          margin-top .5rem
+          margin-left 0
+        li:first-child
+          margin-top 0
+      .streak-box
+        .day
+          width 1rem
+          height 1rem
+          margin-right .25rem
+          margin-bottom .25rem
+      .achievements
+        padding-bottom -2rem
+        display: flex;
+        box-orient: horizontal;
+        flex-direction: row;
+        box-pack: center;
+        justify-content: center;
+        box-align: center;  
+        align-items: center;
+
+        img.achievement
+          flex 1 100%
+          width 100%
+          max-width 100%
+          height auto
+          margin-right .5rem
+          padding .25rem
+          border-width 2px
+          margin-bottom .25rem
+        .achievement:last-child
+          margin-right 0
+    .habit-overview
+      display block
+      height auto
+      nav
+        display block
+        text-align left
+        margin-top .5rem
+        span
+          margin-bottom .5rem
+          display block
+        span:last-child
+          margin-bottom 0
+      h2
+        display block
+      .day-indicator, level-indicator, experience-bar
+        display none
