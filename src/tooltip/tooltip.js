@@ -38,10 +38,6 @@ var tooltip = /* @ngInject */ function($compile) {
       $compile(content)(scope).scope().$watch(function() {
         $el.tooltipster('reposition');
       });
-
-      scope.$on('$destroy', function() {
-        $el.tooltipster('hide');
-      });
     }
   };
 };
