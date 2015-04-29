@@ -31,7 +31,11 @@ var tooltip = /* @ngInject */ function($compile) {
           } else if (offset.right > $(window).width() - 20) {
             $el.tooltipster('option', 'position', 'top-right');
             $el.tooltipster('reposition');
+          } else {
+            return;
           }
+          
+          window.requestAnimationFrame(function() { $el.tooltipster('reposition'); });
         }
       });
 
