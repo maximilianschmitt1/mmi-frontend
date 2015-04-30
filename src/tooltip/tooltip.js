@@ -26,10 +26,10 @@ var tooltip = /* @ngInject */ function($compile) {
           }
 
           var offset = elementOffset($el.tooltipster('elementTooltip'));
-          if (offset.left < 20) {
+          if (offset.left < 15) {
             $el.tooltipster('option', 'position', 'top-left');
             $el.tooltipster('reposition');
-          } else if (offset.right > $(window).width() - 20) {
+          } else if (offset.right > $(window).width() - 15) {
             $el.tooltipster('option', 'position', 'top-right');
             $el.tooltipster('reposition');
           } else {

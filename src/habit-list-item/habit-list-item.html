@@ -11,6 +11,7 @@
     <nav>
       <span
         tooltip="Zum Korrigieren klicken!"
+        tooltip-position="top"
         ng-click="correctTodaysActivity(); $event.stopPropagation()"
         class="activity-status"
         ng-if="habit.today && !correctingTodaysActivity">
@@ -46,7 +47,7 @@
     <section class="habit-detail">
       <h3>Achievements</h3>
       <div class="achievements">
-        <img class="achievement" ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltip="{{achievement.description}}" tooltip-position="{{$index === 0 ? 'top-left' : 'top'}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
+        <img class="achievement" ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltip="{{achievement.description}}" ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
       </div>
       <ul class="stats">
         <li><strong>{{habit.achievedAchievements.length}}</strong> von <strong>{{habit.achievements.length}}</strong> Achievements freigeschaltet.</li>
