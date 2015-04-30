@@ -8,30 +8,31 @@
       </div>
       <experience-bar habit="habit"></experience-bar>
     </div>
-    <nav>
+    <nav ng-show="loading"><span class="loading-indicator">Einen Moment bitte...</span></nav>
+    <nav ng-hide="loading">
       <span
         tooltip="Zum Korrigieren klicken!"
         tooltip-position="top"
         ng-click="correctTodaysActivity(); $event.stopPropagation()"
         class="activity-status"
-        ng-if="habit.today && !correctingTodaysActivity">
+        ng-show="habit.today && !correctingTodaysActivity">
           {{habit.today === 'success' ? 'Du hast das Tagesziel erreicht!' : 'Du hast das Tagesziel nicht erreicht.'}}
       </span>
-      <span ng-if="correctingTodaysActivity">Heutiges Tagesziel korrigieren:</span>
-      <span ng-if="!correctingTodaysActivity && !habit.today">Heutiges Tagesziel:</span>
+      <span ng-show="correctingTodaysActivity">Heutiges Tagesziel korrigieren:</span>
+      <span ng-show="!correctingTodaysActivity && !habit.today">Heutiges Tagesziel:</span>
       <button
-        ng-if="!habit.today || correctingTodaysActivity"
+        ng-show="!habit.today || correctingTodaysActivity"
         ng-click="succeed(habit); stopCorrectingTodaysActivity(); $event.stopPropagation()"
         class="success">
           Erreicht
         </button>
       <button
-        ng-if="!habit.today || correctingTodaysActivity"
+        ng-show="!habit.today || correctingTodaysActivity"
         ng-click="fail(habit); stopCorrectingTodaysActivity(); $event.stopPropagation()"
         class="fail">
           Verfehlt
         </button>
-      <button ng-if="correctingTodaysActivity" ng-click="stopCorrectingTodaysActivity(); $event.stopPropagation()">Abbrechen</button>
+      <button ng-show="correctingTodaysActivity" ng-click="stopCorrectingTodaysActivity(); $event.stopPropagation()">Abbrechen</button>
     </nav>
   </header>
   <section ng-show="toggled" class="habit-details">

@@ -25,7 +25,7 @@ var HabitListController = function($scope, habitStore, ModalService) {
 
   $scope.reload = function() {
     $scope.loading = true;
-    habitStore.list().then(function(habits) {
+    return habitStore.list().then(function(habits) {
       $scope.loading = false;
       $scope.habits = habits;
     });

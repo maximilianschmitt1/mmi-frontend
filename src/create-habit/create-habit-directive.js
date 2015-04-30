@@ -24,7 +24,7 @@ var createHabitDirective = function(API_URL, $http) {
       scope.createHabit = createHabit;
 
       if (mobile) {
-        var habit = { name: window.prompt('Was nimmst du dir vor?', 'z.B. Jeden Tag 2 Liter Wasser trinken') };
+        var habit = { name: window.prompt('Was nimmst du dir vor? (z.B. Jeden Tag 2 Liter Wasser trinken)') };
         if (!habit.name) {
           scope.onCancel();
           return;

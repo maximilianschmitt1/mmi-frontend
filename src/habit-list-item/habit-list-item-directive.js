@@ -18,7 +18,10 @@ var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
       onDelete: '&'
     },
     link: function(scope, el, attrs) {
-      scope.$watch('habit', queueModals);
+      scope.$watch('habit', function onReload(habit) {
+        queueModals(habit);
+        scope.loading = false;
+      });
 
       if (mobile) {
         scope.$watch('toggled', function(toggled) {
@@ -61,12 +64,14 @@ var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
       };
 
       scope.succeed = function(habit) {
+        scope.loading = true;
         return $http
           .post(API_URL + '/habits/' + habit._id + '/activity', { type: 'success' })
           .then(scope.onChange);
       };
 
       scope.fail = function(habit) {
+        scope.loading = true;
         return $http
           .post(API_URL + '/habits/' + habit._id + '/activity', { type: 'fail' })
           .then(scope.onChange);
@@ -99,6 +104,8 @@ var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
       });
     });
   }
+
+
 
   function queueModals(habit) {
     var modals = [];
