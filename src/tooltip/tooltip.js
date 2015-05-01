@@ -23,22 +23,23 @@ var tooltip = /* @ngInject */ function($compile) {
         position: attrs.tooltipPosition || 'top',
         maxWidth: $(window).width() - 2 * padding,
         theme: 'habit-tooltipster',
+        trigger: mobile ? 'none' : 'hover',
         functionReady: function() {
           if (attrs.tooltipPosition) {
             return;
           }
-
+          $el.tooltipster('option', 'position', 'top');
+          $el.tooltipster('reposition');
           var offset = elementOffset($el.tooltipster('elementTooltip'));
           if (offset.left < padding) {
             $el.tooltipster('option', 'position', 'top-left');
-            $el.tooltipster('reposition');
           } else if (offset.right > $(window).width() - padding) {
             $el.tooltipster('option', 'position', 'top-right');
-            $el.tooltipster('reposition');
           } else {
             return;
           }
           
+          $el.tooltipster('reposition');
           // hack to fix a weird bug where top-right isnt positioned properly
           $el.tooltipster('reposition');
         }
@@ -49,14 +50,11 @@ var tooltip = /* @ngInject */ function($compile) {
       });
 
       if (mobile) {
-        $el.tooltipster('disable');
         $el.on('touchstart touchmove', function() {
-          $el.tooltipster('enable');
           $el.tooltipster('show');
         });
         $el.on('touchend touchleave touchcancel', function() {
           $el.tooltipster('hide');
-          $el.tooltipster('disable');
         });
       }
     }
