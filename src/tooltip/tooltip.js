@@ -14,12 +14,14 @@ var tooltip = /* @ngInject */ function($compile) {
       }
 
       var content = angular.element('<span>' + attrs.tooltip + '</span>');
+      var padding = mobile ? 30 : 15;
 
       $el.tooltipster({
         content: content,
         delay: attrs.tooltipDelay || 0,
         speed: attrs.tooltipSpeed || 100,
         position: attrs.tooltipPosition || 'top',
+        maxWidth: $(window).width() - 2 * padding,
         theme: 'habit-tooltipster',
         functionReady: function() {
           if (attrs.tooltipPosition) {
@@ -27,10 +29,10 @@ var tooltip = /* @ngInject */ function($compile) {
           }
 
           var offset = elementOffset($el.tooltipster('elementTooltip'));
-          if (offset.left < 15) {
+          if (offset.left < padding) {
             $el.tooltipster('option', 'position', 'top-left');
             $el.tooltipster('reposition');
-          } else if (offset.right > $(window).width() - 15) {
+          } else if (offset.right > $(window).width() - padding) {
             $el.tooltipster('option', 'position', 'top-right');
             $el.tooltipster('reposition');
           } else {
