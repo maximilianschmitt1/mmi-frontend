@@ -44,7 +44,7 @@
     border-bottom-width 4px
   
   &.toggled .habit-overview
-    border-color color-neutral
+    border-color color-text
 
   .habit-overview
     @extends $row
@@ -157,7 +157,7 @@
     fill: color-success
     opacity 1
 
-+below(rupture.desktop-cutoff)
++below('m')
   .habit-list-item
     .habit-details
       margin-left 0

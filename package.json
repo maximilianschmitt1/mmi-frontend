@@ -60,6 +60,7 @@
   "dependencies": {
     "array-find": "^0.1.1",
     "bluebird": "^2.9.25",
+    "bowser": "^0.7.2",
     "fastclick": "^1.0.6",
     "moment": "^2.10.2",
     "object.assign": "^2.0.1",

@@ -1,14 +1,15 @@
 'use strict';
 
-var mobile = require('is-mobile')(navigator.userAgent);
 var angular = require('angular');
 var $ = require('jquery');
+var bowser = require('bowser').browser;
+var mobile = bowser.mobile || bowser.tablet;
 
 var tooltip = /* @ngInject */ function($compile) {
   return {
     link: function(scope, $el, attrs) {
       // disable tooltips on mobile
-      if (mobile) {
+      if (mobile && typeof attrs.tooltipTouch === 'undefined') {
         return;
       }
 
@@ -37,13 +38,25 @@ var tooltip = /* @ngInject */ function($compile) {
           }
           
           // hack to fix a weird bug where top-right isnt positioned properly
-          window.requestAnimationFrame(function() { $el.tooltipster('reposition'); });
+          $el.tooltipster('reposition');
         }
       });
 
       $compile(content)(scope).scope().$watch(function() {
         $el.tooltipster('reposition');
       });
+
+      if (mobile) {
+        $el.tooltipster('disable');
+        $el.on('touchstart touchmove', function() {
+          $el.tooltipster('enable');
+          $el.tooltipster('show');
+        });
+        $el.on('touchend touchleave touchcancel', function() {
+          $el.tooltipster('hide');
+          $el.tooltipster('disable');
+        });
+      }
     }
   };
 };

@@ -4,7 +4,8 @@ var LevelUpModal = require('../modals/level-up/level-up-modal');
 var AchievementModal = require('../modals/achievement/achievement-modal');
 var assign = require('object.assign');
 var scroll2 = require('scroll');
-var mobile = require('is-mobile')(navigator.userAgent);
+var bowser = require('bowser').browser;
+var mobile = bowser.mobile || bowser.tablet;
 
 var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
   return {

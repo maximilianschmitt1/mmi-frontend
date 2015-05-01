@@ -1,13 +1,13 @@
 'use strict';
 
 var angular = require('angular');
-var mobile = require('is-mobile')(navigator.userAgent);
+var bowser = require('bowser').browser;
 
 var createHabitDirective = function(API_URL, $http) {
   return {
     restrict: 'E',
-    templateUrl: !mobile ? '/create-habit/create-habit.html' : null,
-    template: mobile ? '' : null,
+    templateUrl: !(bowser.mobile || bowser.tablet) ? '/create-habit/create-habit.html' : null,
+    template: (bowser.mobile || bowser.tablet) ? '' : null,
     scope: {
       onCreate: '&',
       onCancel: '&'
@@ -23,7 +23,7 @@ var createHabitDirective = function(API_URL, $http) {
 
       scope.createHabit = createHabit;
 
-      if (mobile) {
+      if (bowser.mobile || bowser.tablet) {
         var habit = { name: window.prompt('Was nimmst du dir vor? (z.B. Jeden Tag 2 Liter Wasser trinken)') };
         if (!habit.name) {
           scope.onCancel();
