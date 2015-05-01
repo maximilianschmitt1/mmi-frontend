@@ -1,4 +1,4 @@
-+'use strict';
+'use strict';
 
 var moment = require('moment');
 var find = require('array-find');
@@ -95,12 +95,18 @@ function days(habit) {
 }
 
 function achievements(habit) {
-  return achievementList.map(function(achievement) {
+  var before = habit._before;
+  return achievementList.map(function(achievement, i) {
+    var achieved = achievement.check(habit);
+    var oldAchievement = before && find(before.achievements, function(_achievement) {
+      return _achievement.title === achievement.title;
+    });
     return {
       title: achievement.title,
+      seen: oldAchievement ? !(achieved && !oldAchievement.achieved) : true,
       description: achievement.description,
       icon: achievement.icon,
-      achieved: achievement.check(habit)
+      achieved: achieved
     };
   });
 }

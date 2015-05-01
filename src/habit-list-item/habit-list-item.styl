@@ -13,6 +13,15 @@
     opacity .5
   &.toggled
     border-bottom 1px solid color-neutral-background
+    
+  .level-indicator
+    background color-neutral-background
+    border-radius 50%
+    width 3rem
+    height 3rem
+    display flex
+    align-items center
+    justify-content center
 
   .habit-settings
     border-top 1px solid color-neutral-background
@@ -68,7 +77,7 @@
       display flex
       align-items center
 
-    level-indicator
+    .level-indicator
       font-size 1rem
       flex 0 0 3rem
       margin-right 1.5rem
@@ -209,7 +218,7 @@
           margin-bottom 0
       h2
         display block
-      .day-indicator, level-indicator
+      .day-indicator, .level-indicator
         display none
     &.toggled .habit-overview h2
       font-size 1.6rem

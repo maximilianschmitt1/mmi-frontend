@@ -1,6 +1,8 @@
 <div class="habit-today-{{habit.today || 'pending'}}" ng-class="{ 'habit-list-item': true, toggled: toggled, faded: !allCollapsed && !toggled }">
   <header ng-click="toggle()" class="habit-overview">
-    <level-indicator tooltip="Level" tooltip-touch tooltip-position="top" habit="habit"></level-indicator>
+    <div class="level-indicator">
+      <level-indicator tooltip="Level" tooltip-touch tooltip-position="top" habit="habit"></level-indicator>
+    </div>
     <div>
       <div class="habit-name">
         <h2>{{habit.name}}</h2>
@@ -37,7 +39,7 @@
   </header>
   <section ng-show="toggled" class="habit-details">
     <section class="habit-detail">
-      <h3>Erfahrungspunkte</h3>
+      <h3>Habit-Level <level-indicator habit="habit"></level-indicator></h3>
       <experience-bar
         habit="habit"></experience-bar>
       <ul class="stats">
@@ -48,7 +50,7 @@
     <section class="habit-detail">
       <h3>Achievements</h3>
       <div class="achievements">
-        <img class="achievement" ng-class="{ achieved: achievement.achieved }" ng-repeat="achievement in habit.achievements" tooltip="{{achievement.description}}" tooltip-touch ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
+        <img class="achievement" ng-class="{ achieved: achievement.achieved && achievement.seen }" ng-repeat="achievement in habit.achievements" tooltip="{{achievement.description}}" tooltip-touch ng-src="{{achievement.icon}}" alt="{{achievement.title}}">
       </div>
       <ul class="stats">
         <li><strong>{{habit.achievedAchievements.length}}</strong> von <strong>{{habit.achievements.length}}</strong> Achievements freigeschaltet.</li>
