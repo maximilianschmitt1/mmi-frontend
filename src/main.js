@@ -13,13 +13,14 @@ var angular = require('angular');
 
 var app = angular.module('habit', ['ui.router', 'ng-autofocus', 'angularModalService', 'ng-slide-down']);
 
-app.controller('AppController', function(authService, $state) {
+app.controller('AppController', function(authService) {
   this.logout = authService.logout;
 });
 
 app.controller('HabitListController', require('./habit-list/habit-list-controller'));
 app.controller('SignupController', require('./signup/signup-controller'));
 app.controller('LoginController', require('./login/login-controller'));
+app.controller('SettingsController', require('./settings/settings-controller'));
 
 app.directive('tooltip', require('./tooltip/tooltip'));
 app.directive('habitListItem', require('./habit-list-item/habit-list-item-directive'));
@@ -34,8 +35,8 @@ app.service('authService', require('./auth/auth-service'));
 app.service('authRegistry', require('./auth/auth-registry'));
 app.factory('authTokenInjector', require('./auth/auth-token-injector'));
 
-// app.constant('API_URL', 'http://192.168.55.55');
-app.constant('API_URL', 'http://habitserver.ngrok.io');
+app.constant('API_URL', 'http://localhost:8080');
+//app.constant('API_URL', 'http://habitserver.ngrok.io');
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
@@ -61,6 +62,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/signup',
       controller: 'SignupController',
       templateUrl: 'signup/signup.html'
+    })
+    .state('settings', {
+      url: '/settings',
+      controller: 'SettingsController',
+      templateUrl: '/settings/settings.html'
     });
 });
 
@@ -68,7 +74,7 @@ app.run(function(authRegistry, $rootScope, $state) {
   authRegistry.config();
 
   // redirect auth-routes to login if not logged in
-  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+  $rootScope.$on('$stateChangeStart', function(e, toState, toParams) {
     if (toState.auth && !authRegistry.token()) {
       $rootScope.previousState = {
         name: toState.name,

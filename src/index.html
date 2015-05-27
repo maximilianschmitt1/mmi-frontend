@@ -15,6 +15,7 @@
           <a ng-if="!user" ui-sref="login">Login</a>
           <a ng-if="!user" ui-sref="signup">Registieren</a>
 
+          <a ng-if="user" ui-sref="settings">Einstellungen</a>
           <a ng-if="user" ng-click="app.logout()">Ausloggen</a>
         </nav>
       </div>

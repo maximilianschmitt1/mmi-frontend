@@ -1,0 +1,21 @@
+<div class="thin">
+  <header class="page-header">
+    <h1>Einstellungen</h1>
+  </header>
+  <section class="page-body">
+    <div class="success-message" ng-show="success">
+      <p>Deine Einstellungen wurden erfolgreich aktualisiert.</p>
+    </div>
+    <form role="form" ng-submit="update(settings || {})">
+      <div class="error-message" ng-show="error">
+        <p>Bitte stell sicher, dass all deine Angaben richtig sind.</p>
+      </div>
+      <div class="input-container">
+        <label><input type="checkbox" ng-model="settings.remind"> Erinnere mich abends per Mail, meine Tagesziele zu aktualisieren.</label>
+      </div>
+      <div class="submit-container left">
+        <input class="primary" type="submit" value="Einstellungen aktualisieren">
+      </div>
+    </form>
+  </section>
+</div>

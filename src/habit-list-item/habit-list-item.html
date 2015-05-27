@@ -1,7 +1,7 @@
 <div class="habit-today-{{habit.today || 'pending'}}" ng-class="{ 'habit-list-item': true, toggled: toggled, faded: !allCollapsed && !toggled }">
   <header ng-click="toggle()" class="habit-overview">
-    <div class="level-indicator">
-      <level-indicator tooltip="Level" tooltip-touch tooltip-position="top" habit="habit"></level-indicator>
+    <div tooltip="Level" tooltip-touch tooltip-position="top" class="level-indicator">
+      <level-indicator habit="habit"></level-indicator>
     </div>
     <div>
       <div class="habit-name">
