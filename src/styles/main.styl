@@ -42,10 +42,10 @@ strong
   .wrapper
     @extends $row
     height 3.5rem
-    
+
     nav
       flex 0 auto
-    
+
   h1
     color white
     margin 0
@@ -54,8 +54,14 @@ strong
 .page-header
   @extends $row
   margin-top 2rem
+  justify-content space-between
   h1
+    flex initial
     font-size 1.5rem
+  nav
+    max-width 800px
+    form.inline input
+      min-width initial
 
 .page-body
   margin-top 1rem
