@@ -1,6 +1,6 @@
 'use strict';
 
-var SignupController = function($scope, $http, API_URL) {
+var SignupController = /*@ngInject*/ function($scope, $http, API_URL) {
   $scope.signup = function(userData) {
     $http
       .post(API_URL + '/users', userData)

@@ -1,6 +1,6 @@
 'use strict';
 
-var levelIndicator = function($timeout) {
+var levelIndicator = /*@ngInject*/ function($timeout) {
   return {
     template: '{{level}}',
     link: function(scope, el, attrs) {

@@ -1,10 +1,10 @@
 'use strict';
 
-var LoginController = function($scope, authService) {
+var LoginController = /*@ngInject*/ function($scope, authService) {
   $scope.login = function(credentials) {
     authService
       .login(credentials)
-      .then(function(res) {
+      .then(function() {
         $scope.success = true;
         $scope.error = false;
       })

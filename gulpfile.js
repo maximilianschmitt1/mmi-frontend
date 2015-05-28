@@ -8,12 +8,19 @@ var autoprefixer = require('gulp-autoprefixer');
 var rupture      = require('rupture');
 var rename       = require('gulp-rename');
 var sequence     = require('run-sequence');
+var ngAnnotate   = require('gulp-ng-annotate');
+var uglify       = require('gulp-uglify');
+var gutil        = require('gulp-util');
+var minifyCss    = require('gulp-minify-css');
+var buffer       = require('gulp-buffer');
 var statik       = require('statik');
 var notifier     = require('stream-notifier');
 var watchify     = require('watchify');
 
+var production = process.env.NODE_ENV === 'production';
+
 gulp.task('browserify', function() {
-  var bundler = browserify('./src/main')
+  var bundler = browserify('./src/main');
   var bundle = compileBundle(bundler);
 
   return bundle();
@@ -24,7 +31,7 @@ gulp.task('watchify', function() {
   opts.debug = true;
 
   var bundler = watchify(browserify('./src/main', opts));
-  var bundle = compileBundle(bundler)
+  var bundle = compileBundle(bundler);
   bundler.on('update', bundle);
 
   return bundle();
@@ -46,6 +53,7 @@ gulp.task('styles', function() {
     }))
     .on('error', n.error)
     .pipe(autoprefixer())
+    .pipe(production ? minifyCss() : gutil.noop())
     .pipe(rename('app.css'))
     .pipe(gulp.dest('dist'))
     .on('end', n.end);
@@ -83,6 +91,9 @@ function compileBundle(bundler) {
       .bundle()
       .on('error', n.error)
       .pipe(source('app.js'))
+      .pipe(production ? buffer() : gutil.noop())
+      .pipe(production ? ngAnnotate() : gutil.noop())
+      .pipe(production ? uglify() : gutil.noop())
       .pipe(gulp.dest('dist'))
       .on('end', n.end);
   };

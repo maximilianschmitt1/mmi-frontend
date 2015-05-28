@@ -1,6 +1,6 @@
 'use strict';
 
-var authRegistry = function($rootScope) {
+var authRegistry = /*@ngInject*/ function($rootScope) {
   var token, user;
 
   return {

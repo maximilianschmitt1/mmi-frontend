@@ -1,6 +1,6 @@
 'use strict';
 
-var SettingsController = function($scope, $rootScope, $http, API_URL, authRegistry) {
+var SettingsController = /*@ngInject*/ function($scope, $rootScope, $http, API_URL, authRegistry) {
   $scope.settings = {
     remind: !!$rootScope.user.remind
   };

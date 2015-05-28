@@ -1,6 +1,6 @@
 'use strict';
 
-var authTokenInjector = function(authRegistry) {
+var authTokenInjector = /*@ngInject*/ function(authRegistry) {
   return {
     request: function(config) {
       var token = authRegistry.token();

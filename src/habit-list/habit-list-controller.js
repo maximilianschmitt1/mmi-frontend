@@ -1,8 +1,6 @@
 'use strict';
 
-var find = require('array-find');
-
-var HabitListController = function($scope, habitStore, ModalService) {
+var HabitListController = /*@ngInject*/ function($scope, habitStore) {
   $scope.habits = [];
 
   $scope.allCollapsed = function() {

@@ -3,7 +3,7 @@
 var angular = require('angular');
 var bowser = require('bowser').browser;
 
-var createHabitDirective = function(API_URL, $http) {
+var createHabitDirective = /*@ngInject*/ function(API_URL, $http) {
   return {
     restrict: 'E',
     templateUrl: !(bowser.mobile || bowser.tablet) ? '/create-habit/create-habit.html' : null,

@@ -11,7 +11,7 @@ var round = function(value) {
 
 var habits = [];
 
-var habitStore = function($http, API_URL) {
+var habitStore = /*@ngInject*/ function($http, API_URL) {
   return {
     get: function(habitId) {
       return $http.get(API_URL + '/habits/' + habitId).then(function(res) { return parseHabit(res.data.habit); });

@@ -3,7 +3,7 @@
 var angular = require('angular');
 var Velocity = require('velocity-animate');
 
-var experienceBar = function() {
+var experienceBar = /*@ngInject*/ function() {
   return {
     templateUrl: '/experience-bar/experience-bar.html',
     link: function(scope, el, attrs) {

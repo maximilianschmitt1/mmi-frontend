@@ -2,12 +2,11 @@
 
 var LevelUpModal = require('../modals/level-up/level-up-modal');
 var AchievementModal = require('../modals/achievement/achievement-modal');
-var assign = require('object.assign');
 var scroll2 = require('scroll');
 var bowser = require('bowser').browser;
 var mobile = bowser.mobile || bowser.tablet;
 
-var habitListItem = function($http, API_URL, ModalService, $q, habitStore) {
+var habitListItem = /*@ngInject*/ function($http, API_URL, ModalService, $q) {
   return {
     templateUrl: '/habit-list-item/habit-list-item.html',
     scope: {

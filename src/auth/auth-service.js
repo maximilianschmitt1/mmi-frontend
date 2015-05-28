@@ -1,6 +1,6 @@
 'use strict';
 
-var authService = function($http, API_URL, authRegistry, $rootScope) {
+var authService = /*@ngInject*/ function($http, API_URL, authRegistry, $rootScope) {
   var token, user;
 
   return {

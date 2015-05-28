@@ -2,7 +2,7 @@
 
 var animateTransition = require('animate-transition');
 
-var modal = function() {
+var modal = /*@ngInject*/ function() {
   return {
     transclude: true,
     templateUrl: '/modals/modal.html',
