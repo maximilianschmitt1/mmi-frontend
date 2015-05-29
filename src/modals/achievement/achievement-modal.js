@@ -1,6 +1,6 @@
 'use strict';
 
-var AchievementModal = function($scope, habit, achievement, close) {
+var AchievementModal = /*@ngInject*/ function($scope, habit, achievement, close) {
   achievement.seen = true;
 
   $scope.habit = habit;

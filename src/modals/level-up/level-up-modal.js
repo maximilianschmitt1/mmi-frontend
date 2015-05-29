@@ -1,6 +1,6 @@
 'use strict';
 
-var LevelUpModal = function($scope, $element, $timeout, habit, close) {
+var LevelUpModal = /*@ngInject*/ function($scope, $element, $timeout, habit, close) {
   $scope.habit = habit;
   $scope.close = close;
 };
