@@ -5,7 +5,7 @@
 * [node.js](https://nodejs.org/) installieren
 * `git clone https://github.com/maximilianschmitt1/mmi-frontend.git`
 * `cd mmi-frontend`
-* `npm install`
+* `npm install` (Bei der Meldung `Unable to find a suitable version for angular, please choose one`, `angular#~1.3.x` wählen)
 
 ## Entwicklung starten
 
@@ -25,8 +25,8 @@
 * [angular-ui-router](https://github.com/angular-ui/ui-router)
 * [angular-modal-service](https://github.com/dwmkerr/angular-modal-service)
 * [AnimateTransition](https://github.com/Rapid-Application-Development-JS/AnimateTransition)
-* [angular-tooltips](https://github.com/720kb/angular-tooltips)
 * [normalize.css](http://necolas.github.io/normalize.css/)
+* [Tooltipster](http://iamceege.github.io/tooltipster/)
 
 ### Icons
 
