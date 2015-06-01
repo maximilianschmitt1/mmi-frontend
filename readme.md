@@ -9,6 +9,8 @@
 
 ## Entwicklung starten
 
+**Hinweis:** Die Anwendung wurde für Google Chrome (Version 43.0.2357.81) und iOS Safari getestet.
+
 * `npm start`
 * [localhost:3000](http://localhost:3000) im Browser aufrufen
 
