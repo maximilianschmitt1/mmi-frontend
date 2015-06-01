@@ -36,7 +36,6 @@ app.service('authRegistry', require('./auth/auth-registry'));
 app.factory('authTokenInjector', require('./auth/auth-token-injector'));
 
 app.constant('API_URL', 'http://192.168.55.55');
-//app.constant('API_URL', 'http://habitserver.ngrok.io');
 
 app.config(/*@ngInject*/ function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
